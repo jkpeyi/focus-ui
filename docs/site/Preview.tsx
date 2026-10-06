@@ -10,9 +10,11 @@ export interface PreviewProps {
   description?: string;
   /** Remove padding / centering — for full-width examples like tables. */
   bleed?: boolean;
+  /** Render a full-page sample inside a fixed-height, scrollable viewport. */
+  frame?: boolean;
 }
 
-export function Preview({ example, title, description, bleed }: PreviewProps) {
+export function Preview({ example, title, description, bleed, frame }: PreviewProps) {
   const [view, setView] = useState('preview');
   const ex = getExample(example);
   if (!ex) return <div className="text-danger">Missing example: {example}</div>;
@@ -38,7 +40,11 @@ export function Preview({ example, title, description, bleed }: PreviewProps) {
         </div>
       )}
       <div className="overflow-hidden rounded-2xl border border-line bg-surface">
-        {view === 'preview' ? (
+        {view === 'preview' && frame ? (
+          <div className="scrollbar-thin h-[760px] overflow-auto [&>*]:!min-h-full">
+            <Component />
+          </div>
+        ) : view === 'preview' ? (
           <div
             className={cn(
               'bg-canvas/60 dark:bg-canvas',

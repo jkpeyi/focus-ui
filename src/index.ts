@@ -23,6 +23,8 @@ export * from './components/Switch';
 export * from './components/RadioGroup';
 export * from './components/SegmentedControl';
 export * from './components/SearchField';
+export * from './components/PasswordInput';
+export * from './components/OtpInput';
 
 // Feedback
 export * from './components/Alert';
@@ -38,6 +40,9 @@ export * from './components/Popover';
 export * from './components/Tooltip';
 export * from './components/DropdownMenu';
 export * from './components/Portal';
+
+// Authentication
+export * from './components/AuthLayout';
 
 // Navigation & layout
 export * from './components/AppShell';

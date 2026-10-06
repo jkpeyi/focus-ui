@@ -89,6 +89,7 @@ The site is deployed to **GitHub Pages** by `.github/workflows/deploy-docs.yml` 
 | **Forms**               | `Field`, `Label`, `Input`, `Textarea`, `Select`, `Combobox`, `Checkbox`, `Switch`, `RadioGroup`, `SegmentedControl`, `SearchField`                                                                                                                     |
 | **Feedback**            | `Alert`, `ToastProvider` / `useToast`, `Progress`, `ProgressRing`, `EmptyState`                                                                                                                                                                        |
 | **Overlays**            | `Modal`, `ConfirmDialog`, `Sheet`, `Popover`, `Tooltip`, `DropdownMenu`, `Portal`                                                                                                                                                                      |
+| **Authentication**      | `AuthLayout` (centered / split), `AuthDivider`, `OtpInput`, `PasswordInput` + `getPasswordStrength` — plus ready-made Sign in, Registration and 2-step verification sample screens in `docs/examples/auth/`                                            |
 | **Navigation & layout** | `AppShell`, `Sidebar` (+ `SidebarSection`, `SidebarItem` with nested sub-menus, `SidebarProfile`), `Topbar`, `Footer` (columns / simple / status bar), `ActionBar`, `PageHeader`, `Tabs` (+ `TabList`, `Tab`, `TabPanel`), `Breadcrumbs`, `Pagination` |
 | **Data display**        | `DataTable`, `StatCard`, `Sparkline`, `DescriptionList`, `Stepper`, `Timeline`                                                                                                                                                                         |
 | **Theming**             | `ThemeProvider`, `useTheme`                                                                                                                                                                                                                            |
@@ -256,6 +257,16 @@ const columns: DataTableColumn<Order>[] = [
     </>
   }
 />
+```
+
+### Authentication screens
+
+`AuthLayout` provides the page shell; the sample screens in [`docs/examples/auth/`](docs/examples/auth) (Sign in, Registration, OTP verification) are complete pages to copy and connect to your auth API.
+
+```tsx
+<AuthLayout logo={<Logo />} title="Check your email" description="Enter the 6-digit code we sent you.">
+  <OtpInput autoFocus groupSize={3} onComplete={(code) => api.verify(code)} />
+</AuthLayout>
 ```
 
 ### Toasts

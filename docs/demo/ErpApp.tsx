@@ -31,6 +31,9 @@ import {
   Users,
 } from 'lucide-react';
 import { orders } from './data';
+import LoginPage from '../examples/auth/Login';
+import RegisterPage from '../examples/auth/Register';
+import VerifyPage from '../examples/auth/Verify';
 import { Dashboard } from './pages/Dashboard';
 import { Orders } from './pages/Orders';
 import { OrderDetail } from './pages/OrderDetail';
@@ -71,6 +74,11 @@ export default function ErpApp({ route }: { route: string }) {
   const page = section || 'dashboard';
   const pending = orders.filter((o) => o.status === 'pending').length;
 
+  // Authentication screens render full-page, outside the app shell.
+  if (page === 'login') return <LoginPage />;
+  if (page === 'register') return <RegisterPage />;
+  if (page === 'verify') return <VerifyPage />;
+
   let content;
   if (page === 'orders' && id === 'new') content = <NewOrder />;
   else if (page === 'orders' && id) content = <OrderDetail id={id} />;
@@ -101,7 +109,7 @@ export default function ErpApp({ route }: { route: string }) {
                   { label: 'Settings', icon: <Settings />, onSelect: () => (window.location.hash = '/demo/settings') },
                   { label: 'Help & support', icon: <HelpCircle /> },
                   { type: 'separator' },
-                  { label: 'Sign out', icon: <LogOut />, tone: 'danger' },
+                  { label: 'Sign out', icon: <LogOut />, tone: 'danger', onSelect: () => (window.location.hash = '/demo/login') },
                 ]}
               />
             </>
@@ -150,7 +158,7 @@ export default function ErpApp({ route }: { route: string }) {
                   { label: 'Settings', icon: <Settings />, onSelect: () => (window.location.hash = '/demo/settings') },
                   { label: 'Help & support', icon: <HelpCircle /> },
                   { type: 'separator' },
-                  { label: 'Sign out', icon: <LogOut />, tone: 'danger' },
+                  { label: 'Sign out', icon: <LogOut />, tone: 'danger', onSelect: () => (window.location.hash = '/demo/login') },
                 ]}
               />
             </>

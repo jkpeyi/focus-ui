@@ -54,7 +54,14 @@ export function ComponentPage({ doc }: { doc: ComponentDoc }) {
       {doc.examples.length > 0 && (
         <div className="mt-10 space-y-10">
           {doc.examples.map((ex) => (
-            <Preview key={ex.file} example={ex.file} title={ex.title} description={ex.description} bleed={ex.bleed} />
+            <Preview
+              key={ex.file}
+              example={ex.file}
+              title={ex.title}
+              description={ex.description}
+              bleed={ex.bleed}
+              frame={ex.frame}
+            />
           ))}
         </div>
       )}

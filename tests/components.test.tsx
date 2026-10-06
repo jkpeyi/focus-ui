@@ -3,6 +3,9 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   ActionBar,
+  OtpInput,
+  PasswordInput,
+  getPasswordStrength,
   Button,
   Footer,
   Sidebar,
@@ -335,5 +338,54 @@ describe('Footer & ActionBar', () => {
     rerender(<ActionBar variant="sticky" open message="Unsaved changes" actions={<Button>Save</Button>} />);
     expect(screen.getByRole('region', { name: 'Actions' })).toHaveTextContent('Unsaved changes');
     expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument();
+  });
+});
+
+describe('OtpInput', () => {
+  it('auto-advances and calls onComplete', async () => {
+    const onComplete = vi.fn();
+    render(<OtpInput length={4} onComplete={onComplete} />);
+    const boxes = screen.getAllByRole('textbox');
+    await userEvent.click(boxes[0]);
+    await userEvent.keyboard('12a34');
+    expect(boxes.map((b) => (b as HTMLInputElement).value)).toEqual(['1', '2', '3', '4']);
+    expect(onComplete).toHaveBeenCalledWith('1234');
+  });
+
+  it('accepts a pasted code and moves back on backspace', async () => {
+    const onChange = vi.fn();
+    render(<OtpInput length={6} onValueChange={onChange} />);
+    const boxes = screen.getAllByRole('textbox');
+    await userEvent.click(boxes[0]);
+    await userEvent.paste('987 654');
+    expect(onChange).toHaveBeenLastCalledWith('987654');
+    await userEvent.click(boxes[5]);
+    await userEvent.keyboard('{Backspace}{Backspace}');
+    expect(onChange).toHaveBeenLastCalledWith('9876');
+    expect(boxes[4]).toHaveFocus();
+  });
+});
+
+describe('PasswordInput', () => {
+  it('toggles visibility', async () => {
+    render(<PasswordInput aria-label="Password" defaultValue="secret" />);
+    const input = screen.getByLabelText('Password');
+    expect(input).toHaveAttribute('type', 'password');
+    await userEvent.click(screen.getByRole('button', { name: 'Show password' }));
+    expect(input).toHaveAttribute('type', 'text');
+  });
+
+  it('scores password strength', () => {
+    expect(getPasswordStrength('').score).toBe(0);
+    expect(getPasswordStrength('abc').label).toBe('Weak');
+    expect(getPasswordStrength('Acme-2026-Ledger!').label).toBe('Strong');
+  });
+});
+
+describe('OtpInput focus recovery', () => {
+  it('refocuses after being re-enabled', () => {
+    const { rerender } = render(<OtpInput length={4} autoFocus disabled value="" onValueChange={() => {}} />);
+    rerender(<OtpInput length={4} autoFocus value="" onValueChange={() => {}} />);
+    expect(screen.getAllByRole('textbox')[0]).toHaveFocus();
   });
 });

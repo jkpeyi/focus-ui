@@ -5,12 +5,13 @@ export interface ExampleRef {
   title: string;
   description?: string;
   bleed?: boolean;
+  frame?: boolean;
 }
 
 export interface ComponentDoc {
   slug: string;
   title: string;
-  group: 'Foundations' | 'Forms' | 'Feedback' | 'Overlays' | 'Navigation' | 'Data display';
+  group: 'Foundations' | 'Forms' | 'Feedback' | 'Overlays' | 'Navigation' | 'Data display' | 'Authentication';
   description: string;
   import: string;
   examples: ExampleRef[];
@@ -1169,6 +1170,134 @@ export const componentDocs: ComponentDoc[] = [
       },
     ],
   },
+
+  // ───────────────────────── Authentication
+  {
+    slug: 'auth-layout',
+    title: 'Sign in & Registration',
+    group: 'Authentication',
+    description:
+      'Ready-made authentication screens built from one layout component. AuthLayout gives you the page shell — centered card or split screen with a branded panel — and the screens below are complete samples to copy into your app and wire to your auth API.',
+    import: "import { AuthLayout, AuthDivider, PasswordInput, OtpInput } from 'focus-ui';",
+    examples: [
+      {
+        file: 'auth/Login',
+        title: 'Sign in',
+        description:
+          'Centered layout · email + password with show/hide · remember me · passkey and SSO buttons. Submitting continues to verification.',
+        frame: true,
+      },
+      {
+        file: 'auth/Register',
+        title: 'Registration',
+        description:
+          'Split layout with a branded panel (hidden on small screens) · inline validation · password strength meter · terms. Submit empty to see errors.',
+        frame: true,
+      },
+      {
+        file: 'auth/Verify',
+        title: 'Two-step verification (OTP)',
+        description:
+          'Auto-submits when the 6th digit is entered · paste support · error state · resend countdown. Demo code: 123456.',
+        frame: true,
+      },
+    ],
+    props: [
+      {
+        title: 'AuthLayout',
+        props: [
+          {
+            name: 'variant',
+            type: "'centered' | 'split'",
+            default: "'centered'",
+            description: 'Card on the canvas, or form + branded aside.',
+          },
+          { name: 'logo', type: 'ReactNode', description: 'Brand mark above the title.' },
+          { name: 'title', type: 'ReactNode', description: 'Screen title.' },
+          { name: 'description', type: 'ReactNode', description: 'Subtitle.' },
+          { name: 'aside', type: 'ReactNode', description: 'Branded panel (split variant, ≥ lg screens).' },
+          { name: 'topbar', type: 'ReactNode', description: 'Above the form — back link, logo.' },
+          { name: 'footer', type: 'ReactNode', description: 'Small print under the form.' },
+          { name: 'width', type: "'sm' | 'md'", default: "'sm'", description: 'Form column width (md for longer forms).' },
+        ],
+      },
+      {
+        title: 'AuthDivider',
+        props: [{ name: 'children', type: 'ReactNode', default: "'or'", description: 'Label between the two lines.' }],
+      },
+    ],
+    guidelines: [
+      'Use the centered layout for sign-in and verification; split for registration where the side panel can sell the product.',
+      'Use autocomplete attributes (username, current-password, new-password, one-time-code) so password managers and SMS autofill work.',
+      'Never reveal whether an email exists — show the same message for unknown users and wrong passwords.',
+      'Auto-submit OTP on completion, keep a manual Verify button, and rate-limit resends with a visible countdown.',
+    ],
+  },
+  {
+    slug: 'otp-input',
+    title: 'OTP Input',
+    group: 'Authentication',
+    description:
+      'One-time code entry: one box per character with auto-advance, backspace to the previous box, arrow keys, full-code paste and SMS autofill.',
+    import: "import { OtpInput } from 'focus-ui';",
+    examples: [{ file: 'otp/Variants', title: 'Variants' }],
+    props: [
+      {
+        props: [
+          { name: 'length', type: 'number', default: '6', description: 'Number of characters.' },
+          { name: 'value / defaultValue', type: 'string', description: 'Current code.' },
+          { name: 'onValueChange', type: '(value: string) => void', description: 'On every change.' },
+          { name: 'onComplete', type: '(value: string) => void', description: 'When all slots are filled — submit here.' },
+          {
+            name: 'mode',
+            type: "'numeric' | 'alphanumeric'",
+            default: "'numeric'",
+            description: 'Accepted characters (alphanumeric is uppercased).',
+          },
+          { name: 'groupSize', type: 'number', description: 'Visual separator every N slots.' },
+          { name: 'mask', type: 'boolean', description: 'Hide characters (PINs).' },
+          { name: 'size', type: "'md' | 'lg'", default: "'lg'", description: 'Box size.' },
+          {
+            name: 'invalid / disabled / autoFocus',
+            type: 'boolean',
+            description:
+              'States. invalid is automatic inside a Field with error; with autoFocus, focus returns to the first empty box when re-enabled.',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'password-input',
+    title: 'Password Input',
+    group: 'Authentication',
+    description: 'Password field with a show/hide toggle and an optional strength meter for sign-up and change-password forms.',
+    import: "import { PasswordInput, getPasswordStrength } from 'focus-ui';",
+    examples: [{ file: 'password/Basic', title: 'Password input' }],
+    props: [
+      {
+        title: 'PasswordInput',
+        props: [
+          {
+            name: 'showStrength',
+            type: 'boolean',
+            description: 'Show the 4-segment meter; also sets autocomplete="new-password".',
+          },
+          { name: '...props', type: 'InputProps', description: 'Everything Input accepts (size, prefix, invalid…).' },
+        ],
+      },
+      {
+        title: 'getPasswordStrength(password)',
+        props: [
+          {
+            name: 'returns',
+            type: "{ score: 0–4; label: '' | 'Weak' | 'Fair' | 'Good' | 'Strong' }",
+            description: 'Lightweight estimate for validation; swap in zxcvbn for stricter policies.',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
-export const groups = ['Foundations', 'Forms', 'Feedback', 'Overlays', 'Navigation', 'Data display'] as const;
+export const groups = ['Foundations', 'Forms', 'Feedback', 'Overlays', 'Navigation', 'Data display', 'Authentication'] as const;
