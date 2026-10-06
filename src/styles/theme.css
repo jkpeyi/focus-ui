@@ -1,0 +1,266 @@
+/*
+ * Focus UI — design tokens for Tailwind CSS v4.
+ *
+ * Usage (in your app's main CSS file):
+ *
+ *   @import "tailwindcss";
+ *   @import "focus-ui/theme.css";
+ *   @source "../node_modules/focus-ui/dist";
+ *
+ * Every token is a CSS variable prefixed with `--fx-`. Override any of them on
+ * `:root` (light) or `.dark` (dark) to rebrand the whole library.
+ */
+
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+/* ------------------------------------------------------------------ */
+/* Raw tokens                                                         */
+/* ------------------------------------------------------------------ */
+
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --fx-canvas: #f5f5f7;
+  --fx-surface: #ffffff;
+  --fx-surface-2: #fbfbfd;
+  --fx-elevated: #ffffff;
+  --fx-fill: #787880; /* use with opacity: bg-fill/12 */
+
+  /* Text */
+  --fx-fg: #1d1d1f;
+  --fx-fg-muted: #6e6e73;
+  --fx-fg-subtle: #8e8e93;
+
+  /* Lines */
+  --fx-line: #e5e5ea;
+  --fx-line-strong: #d2d2d7;
+
+  /* Brand + semantic */
+  --fx-accent: #0071e3;
+  --fx-accent-hover: #0077ed;
+  --fx-accent-fg: #ffffff;
+  --fx-success: #248a3d;
+  --fx-warning: #b25000;
+  --fx-danger: #d70015;
+  --fx-info: #5856d6;
+
+  /* Elevation */
+  --fx-shadow-card: 0 0 0 1px rgb(0 0 0 / 0.04), 0 1px 2px rgb(0 0 0 / 0.04), 0 2px 8px rgb(0 0 0 / 0.03);
+  --fx-shadow-raised: 0 0 0 0.5px rgb(0 0 0 / 0.06), 0 1px 1px rgb(0 0 0 / 0.04), 0 2px 4px rgb(0 0 0 / 0.06);
+  --fx-shadow-popover: 0 0 0 0.5px rgb(0 0 0 / 0.08), 0 8px 24px -4px rgb(0 0 0 / 0.12), 0 2px 6px rgb(0 0 0 / 0.04);
+  --fx-shadow-modal: 0 0 0 0.5px rgb(0 0 0 / 0.08), 0 24px 64px -12px rgb(0 0 0 / 0.25), 0 8px 20px -8px rgb(0 0 0 / 0.1);
+
+  /* Overlay scrim */
+  --fx-scrim: rgb(0 0 0 / 0.28);
+}
+
+.dark,
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --fx-canvas: #000000;
+  --fx-surface: #1c1c1e;
+  --fx-surface-2: #161618;
+  --fx-elevated: #2c2c2e;
+  --fx-fill: #787880;
+
+  --fx-fg: #f5f5f7;
+  --fx-fg-muted: #a1a1a6;
+  --fx-fg-subtle: #8e8e93;
+
+  --fx-line: #2c2c2e;
+  --fx-line-strong: #3a3a3c;
+
+  --fx-accent: #0a84ff;
+  --fx-accent-hover: #409cff;
+  --fx-accent-fg: #ffffff;
+  --fx-success: #30d158;
+  --fx-warning: #ff9f0a;
+  --fx-danger: #ff453a;
+  --fx-info: #7d7aff;
+
+  --fx-shadow-card: 0 0 0 1px rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.4);
+  --fx-shadow-raised: 0 0 0 0.5px rgb(255 255 255 / 0.08), 0 1px 2px rgb(0 0 0 / 0.5);
+  --fx-shadow-popover: 0 0 0 0.5px rgb(255 255 255 / 0.1), 0 12px 32px -4px rgb(0 0 0 / 0.6);
+  --fx-shadow-modal: 0 0 0 0.5px rgb(255 255 255 / 0.1), 0 24px 64px -12px rgb(0 0 0 / 0.7);
+
+  --fx-scrim: rgb(0 0 0 / 0.55);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tailwind theme mapping                                             */
+/* ------------------------------------------------------------------ */
+
+@theme inline {
+  --color-canvas: var(--fx-canvas);
+  --color-surface: var(--fx-surface);
+  --color-surface-2: var(--fx-surface-2);
+  --color-elevated: var(--fx-elevated);
+  --color-fill: var(--fx-fill);
+
+  --color-fg: var(--fx-fg);
+  --color-fg-muted: var(--fx-fg-muted);
+  --color-fg-subtle: var(--fx-fg-subtle);
+
+  --color-line: var(--fx-line);
+  --color-line-strong: var(--fx-line-strong);
+
+  --color-accent: var(--fx-accent);
+  --color-accent-hover: var(--fx-accent-hover);
+  --color-accent-fg: var(--fx-accent-fg);
+  --color-success: var(--fx-success);
+  --color-warning: var(--fx-warning);
+  --color-danger: var(--fx-danger);
+  --color-info: var(--fx-info);
+  --color-scrim: var(--fx-scrim);
+
+  --shadow-card: var(--fx-shadow-card);
+  --shadow-raised: var(--fx-shadow-raised);
+  --shadow-popover: var(--fx-shadow-popover);
+  --shadow-modal: var(--fx-shadow-modal);
+}
+
+@theme {
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', 'Segoe UI Variable', 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-fx-fade-in: fx-fade-in 180ms var(--ease-apple);
+  --animate-fx-pop-in: fx-pop-in 200ms var(--ease-spring);
+  --animate-fx-modal-in: fx-modal-in 260ms var(--ease-spring);
+  --animate-fx-slide-in-right: fx-slide-in-right 320ms var(--ease-spring);
+  --animate-fx-slide-in-left: fx-slide-in-left 320ms var(--ease-spring);
+  --animate-fx-toast-in: fx-toast-in 360ms var(--ease-spring);
+  --animate-fx-shimmer: fx-shimmer 1.6s ease-in-out infinite;
+  --animate-fx-spin: fx-spin 0.9s steps(8) infinite;
+
+  @keyframes fx-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fx-pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96) translateY(-2px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  @keyframes fx-modal-in {
+    from {
+      opacity: 0;
+      transform: scale(0.94) translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  @keyframes fx-slide-in-right {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes fx-slide-in-left {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes fx-toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @keyframes fx-shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  @keyframes fx-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Utilities                                                          */
+/* ------------------------------------------------------------------ */
+
+/* Apple-style soft focus halo. */
+@utility focus-ring {
+  outline: none;
+  &:focus-visible {
+    box-shadow:
+      0 0 0 1px var(--fx-accent),
+      0 0 0 4px color-mix(in srgb, var(--fx-accent) 28%, transparent);
+  }
+}
+
+/* Translucent "material" used by toolbars, sidebars and popovers. */
+@utility material {
+  background-color: color-mix(in srgb, var(--fx-elevated) 80%, transparent);
+  @apply backdrop-blur-xl backdrop-saturate-[1.8];
+}
+
+/* Thin, unobtrusive scrollbars. */
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--fx-fill) 45%, transparent) transparent;
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--fx-canvas);
+    color: var(--fx-fg);
+    font-family: var(--font-sans);
+    letter-spacing: -0.003em;
+  }
+  ::selection {
+    background-color: color-mix(in srgb, var(--fx-accent) 24%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
