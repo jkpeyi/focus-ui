@@ -77,6 +77,8 @@ npm run dev          # http://localhost:5173 — docs + demo (#/demo)
 npm run build:docs   # static site in docs-dist/, deployable anywhere (hash routing)
 ```
 
+The site is deployed to **GitHub Pages** by `.github/workflows/deploy-docs.yml` on every push to `main` (or via _Run workflow_). One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
 ---
 
 ## Components
