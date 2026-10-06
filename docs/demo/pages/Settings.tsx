@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import {
+  ActionBar,
   Alert,
   Button,
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   Field,
   Input,
@@ -20,11 +21,25 @@ import {
 
 export function SettingsPage() {
   const { toast } = useToast();
-  const save = () => toast({ title: 'Settings saved', tone: 'success' });
+  const [tab, setTab] = useState('general');
+  const [dirty, setDirty] = useState(false);
+  const [saving, setSaving] = useState(false);
+  // Bumping the key remounts the form with its defaults — a simple "discard".
+  const [version, setVersion] = useState(0);
+  const markDirty = () => setDirty(true);
+
+  const save = async () => {
+    setSaving(true);
+    await new Promise((r) => setTimeout(r, 700));
+    setSaving(false);
+    setDirty(false);
+    toast({ title: 'Settings saved', tone: 'success' });
+  };
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-20" onChangeCapture={markDirty}>
       <PageHeader title="Settings" description="Company-wide configuration for Acme Industries." />
-      <Tabs defaultValue="general">
+      <Tabs key={version} value={tab} onValueChange={setTab}>
         <TabList>
           <Tab value="general">General</Tab>
           <Tab value="sales">Sales</Tab>
@@ -32,7 +47,7 @@ export function SettingsPage() {
           <Tab value="notifications">Notifications</Tab>
         </TabList>
 
-        <TabPanel value="general" className="max-w-3xl space-y-6">
+        <TabPanel keepMounted value="general" className="max-w-3xl space-y-6">
           <Card>
             <CardHeader title="Company profile" description="Appears on invoices and purchase orders." />
             <CardContent className="space-y-4">
@@ -63,20 +78,15 @@ export function SettingsPage() {
                 />
               </Field>
             </CardContent>
-            <CardFooter>
-              <Button>Cancel</Button>
-              <Button variant="primary" onClick={save}>
-                Save changes
-              </Button>
-            </CardFooter>
           </Card>
         </TabPanel>
 
-        <TabPanel value="sales" className="max-w-3xl space-y-6">
+        <TabPanel keepMounted value="sales" className="max-w-3xl space-y-6">
           <Card>
             <CardHeader title="Approvals" />
             <CardContent className="space-y-4">
               <Switch
+                onCheckedChange={markDirty}
                 labelPosition="left"
                 label="Require approval for sales orders"
                 description="Orders above the threshold go to the sales manager."
@@ -85,7 +95,7 @@ export function SettingsPage() {
               <Field label="Approval threshold" orientation="horizontal">
                 <Input prefix="€" defaultValue="10,000" numeric wrapperClassName="sm:max-w-48" />
               </Field>
-              <Switch labelPosition="left" label="Block orders over credit limit" defaultChecked />
+              <Switch onCheckedChange={markDirty} labelPosition="left" label="Block orders over credit limit" defaultChecked />
             </CardContent>
           </Card>
           <Card>
@@ -99,15 +109,10 @@ export function SettingsPage() {
                 ]}
               />
             </CardContent>
-            <CardFooter>
-              <Button variant="primary" onClick={save}>
-                Save
-              </Button>
-            </CardFooter>
           </Card>
         </TabPanel>
 
-        <TabPanel value="inventory" className="max-w-3xl space-y-6">
+        <TabPanel keepMounted value="inventory" className="max-w-3xl space-y-6">
           <Alert tone="warning" title="Changing the costing method">
             Switching methods triggers a revaluation of all stock at the next period close.
           </Alert>
@@ -125,15 +130,10 @@ export function SettingsPage() {
                 ]}
               />
             </CardContent>
-            <CardFooter>
-              <Button variant="primary" onClick={save}>
-                Save
-              </Button>
-            </CardFooter>
           </Card>
         </TabPanel>
 
-        <TabPanel value="notifications" className="max-w-3xl">
+        <TabPanel keepMounted value="notifications" className="max-w-3xl">
           <Card className="divide-y divide-line">
             {[
               ['Orders awaiting my approval', 'Instant push and email', true],
@@ -143,6 +143,7 @@ export function SettingsPage() {
             ].map(([label, desc, on]) => (
               <div key={label as string} className="px-5 py-3.5">
                 <Switch
+                  onCheckedChange={markDirty}
                   labelPosition="left"
                   label={label as string}
                   description={desc as string}
@@ -153,6 +154,28 @@ export function SettingsPage() {
           </Card>
         </TabPanel>
       </Tabs>
+      <ActionBar
+        open={dirty}
+        message="You have unsaved changes"
+        actions={
+          <>
+            <Button
+              size="sm"
+              variant="plain"
+              disabled={saving}
+              onClick={() => {
+                setDirty(false);
+                setVersion(version + 1);
+              }}
+            >
+              Discard
+            </Button>
+            <Button size="sm" variant="primary" loading={saving} onClick={save}>
+              Save changes
+            </Button>
+          </>
+        }
+      />
     </div>
   );
 }

@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
+  ActionBar,
   Button,
+  Footer,
+  Sidebar,
+  SidebarItem,
+  SidebarSection,
   Checkbox,
   Combobox,
   ConfirmDialog,
@@ -256,5 +261,79 @@ describe('Toast', () => {
     );
     await userEvent.click(screen.getByRole('button', { name: 'Send' }));
     expect(screen.getByText('Invoice sent')).toBeInTheDocument();
+  });
+});
+
+describe('Sidebar', () => {
+  it('works standalone and marks the active item', () => {
+    render(
+      <Sidebar>
+        <SidebarSection title="Sales">
+          <SidebarItem label="Orders" href="#orders" active badge={3} />
+          <SidebarItem label="Customers" href="#customers" />
+        </SidebarSection>
+      </Sidebar>,
+    );
+    expect(screen.getByRole('navigation', { name: 'Main' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /orders/i })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('link', { name: 'Customers' })).not.toHaveAttribute('aria-current');
+  });
+
+  it('expands nested items and auto-opens the active branch', async () => {
+    render(
+      <Sidebar>
+        <SidebarSection>
+          <SidebarItem label="Invoicing">
+            <SidebarItem label="Invoices" href="#inv" />
+          </SidebarItem>
+          <SidebarItem label="Purchasing">
+            <SidebarItem label="Suppliers" href="#sup" active />
+          </SidebarItem>
+        </SidebarSection>
+      </Sidebar>,
+    );
+    expect(screen.getByRole('link', { name: 'Suppliers' })).toBeInTheDocument();
+    expect(screen.queryByRole('link', { name: 'Invoices' })).not.toBeInTheDocument();
+    const toggle = screen.getByRole('button', { name: 'Invoicing' });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await userEvent.click(toggle);
+    expect(screen.getByRole('link', { name: 'Invoices' })).toBeInTheDocument();
+  });
+
+  it('hides labels when collapsed', () => {
+    render(
+      <Sidebar collapsed>
+        <SidebarSection title="Sales">
+          <SidebarItem label="Orders" href="#orders" icon={<svg />} />
+        </SidebarSection>
+      </Sidebar>,
+    );
+    expect(screen.queryByText('Sales')).not.toBeInTheDocument();
+    expect(screen.queryByText('Orders')).not.toBeInTheDocument();
+  });
+});
+
+describe('Footer & ActionBar', () => {
+  it('renders link columns and inline links', () => {
+    render(
+      <Footer
+        brand="Acme"
+        columns={[{ title: 'Portal', links: [{ label: 'Invoices', href: '/invoices' }] }]}
+        links={[{ label: 'Privacy', href: '/privacy', external: true }]}
+        copyright="© 2026 Acme"
+      />,
+    );
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Invoices' })).toHaveAttribute('href', '/invoices');
+    expect(screen.getByRole('link', { name: 'Privacy' })).toHaveAttribute('target', '_blank');
+    expect(screen.getByText('© 2026 Acme')).toBeInTheDocument();
+  });
+
+  it('shows the action bar only when open', () => {
+    const { rerender } = render(<ActionBar variant="sticky" open={false} message="Unsaved changes" />);
+    expect(screen.queryByText('Unsaved changes')).not.toBeInTheDocument();
+    rerender(<ActionBar variant="sticky" open message="Unsaved changes" actions={<Button>Save</Button>} />);
+    expect(screen.getByRole('region', { name: 'Actions' })).toHaveTextContent('Unsaved changes');
+    expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument();
   });
 });

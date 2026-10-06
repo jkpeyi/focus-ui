@@ -83,17 +83,17 @@ The site is deployed to **GitHub Pages** by `.github/workflows/deploy-docs.yml` 
 
 ## Components
 
-| Group                   | Components                                                                                                                                                     |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Foundations**         | `Button`, `IconButton`, `Badge`, `Avatar`, `AvatarGroup`, `Card` (+ `CardHeader`, `CardContent`, `CardFooter`), `Tag`, `Divider`, `Spinner`, `Skeleton`, `Kbd` |
-| **Forms**               | `Field`, `Label`, `Input`, `Textarea`, `Select`, `Combobox`, `Checkbox`, `Switch`, `RadioGroup`, `SegmentedControl`, `SearchField`                             |
-| **Feedback**            | `Alert`, `ToastProvider` / `useToast`, `Progress`, `ProgressRing`, `EmptyState`                                                                                |
-| **Overlays**            | `Modal`, `ConfirmDialog`, `Sheet`, `Popover`, `Tooltip`, `DropdownMenu`, `Portal`                                                                              |
-| **Navigation & layout** | `AppShell`, `Sidebar`, `SidebarSection`, `SidebarItem`, `Topbar`, `PageHeader`, `Tabs` (+ `TabList`, `Tab`, `TabPanel`), `Breadcrumbs`, `Pagination`           |
-| **Data display**        | `DataTable`, `StatCard`, `Sparkline`, `DescriptionList`, `Stepper`, `Timeline`                                                                                 |
-| **Theming**             | `ThemeProvider`, `useTheme`                                                                                                                                    |
-| **Hooks**               | `useControllableState`, `useFloating`, `useFocusTrap`, `useEscapeKey`, `useClickOutside`, `useLockBodyScroll`, `useMediaQuery`, `usePresence`                  |
-| **Utilities**           | `cn`, `mergeRefs`, `formatCurrency`, `formatNumber`, `formatCompact`, `formatPercent`, `formatDate`                                                            |
+| Group                   | Components                                                                                                                                                                                                                                             |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Foundations**         | `Button`, `IconButton`, `Badge`, `Avatar`, `AvatarGroup`, `Card` (+ `CardHeader`, `CardContent`, `CardFooter`), `Tag`, `Divider`, `Spinner`, `Skeleton`, `Kbd`                                                                                         |
+| **Forms**               | `Field`, `Label`, `Input`, `Textarea`, `Select`, `Combobox`, `Checkbox`, `Switch`, `RadioGroup`, `SegmentedControl`, `SearchField`                                                                                                                     |
+| **Feedback**            | `Alert`, `ToastProvider` / `useToast`, `Progress`, `ProgressRing`, `EmptyState`                                                                                                                                                                        |
+| **Overlays**            | `Modal`, `ConfirmDialog`, `Sheet`, `Popover`, `Tooltip`, `DropdownMenu`, `Portal`                                                                                                                                                                      |
+| **Navigation & layout** | `AppShell`, `Sidebar` (+ `SidebarSection`, `SidebarItem` with nested sub-menus, `SidebarProfile`), `Topbar`, `Footer` (columns / simple / status bar), `ActionBar`, `PageHeader`, `Tabs` (+ `TabList`, `Tab`, `TabPanel`), `Breadcrumbs`, `Pagination` |
+| **Data display**        | `DataTable`, `StatCard`, `Sparkline`, `DescriptionList`, `Stepper`, `Timeline`                                                                                                                                                                         |
+| **Theming**             | `ThemeProvider`, `useTheme`                                                                                                                                                                                                                            |
+| **Hooks**               | `useControllableState`, `useFloating`, `useFocusTrap`, `useEscapeKey`, `useClickOutside`, `useLockBodyScroll`, `useMediaQuery`, `usePresence`                                                                                                          |
+| **Utilities**           | `cn`, `mergeRefs`, `formatCurrency`, `formatNumber`, `formatCompact`, `formatPercent`, `formatDate`                                                                                                                                                    |
 
 Every component:
 
@@ -219,19 +219,43 @@ const columns: DataTableColumn<Order>[] = [
 ```tsx
 <AppShell
   sidebar={
-    <Sidebar header={<Logo />} footer={<UserMenu />}>
+    <Sidebar header={<Logo />} footer={<SidebarProfile name="Ava Thompson" description="Admin" />}>
       <SidebarSection title="Sales">
-        <SidebarItem icon={<Gauge />} label="Dashboard" href="/" active />
-        <SidebarItem icon={<ShoppingCart />} label="Orders" href="/orders" badge={12} />
+        <SidebarItem icon={<Gauge />} label="Dashboard" as={Link} to="/" active />
+        <SidebarItem icon={<ShoppingCart />} label="Orders" as={Link} to="/orders" badge={12} />
+        <SidebarItem icon={<Receipt />} label="Invoicing">
+          <SidebarItem label="Invoices" as={Link} to="/invoices" />
+          <SidebarItem label="Credit notes" as={Link} to="/credit-notes" />
+        </SidebarItem>
       </SidebarSection>
     </Sidebar>
   }
   topbar={<Topbar start={<SearchField shortcut="k" />} end={<Avatar name="Ava Thompson" />} />}
+  footer={<Footer variant="bar" brand="Acme ERP" copyright="v4.12.0" meta="Synced 2 min ago" />}
 >
-  <main className="p-6">
+  <div className="p-6">
     <PageHeader title="Sales orders" actions={<Button variant="primary">New order</Button>} />
-  </main>
+  </div>
 </AppShell>
+```
+
+### Unsaved-changes footer
+
+```tsx
+<ActionBar
+  open={form.isDirty}
+  message="You have unsaved changes"
+  actions={
+    <>
+      <Button variant="plain" onClick={form.reset}>
+        Discard
+      </Button>
+      <Button variant="primary" onClick={form.submit}>
+        Save changes
+      </Button>
+    </>
+  }
+/>
 ```
 
 ### Toasts

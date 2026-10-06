@@ -41,6 +41,9 @@ export * from './components/Portal';
 
 // Navigation & layout
 export * from './components/AppShell';
+export * from './components/Sidebar';
+export * from './components/Footer';
+export * from './components/ActionBar';
 export * from './components/Tabs';
 export * from './components/Breadcrumbs';
 export * from './components/Pagination';

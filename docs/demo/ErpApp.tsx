@@ -1,6 +1,9 @@
 import {
   AppShell,
   Avatar,
+  Badge,
+  Footer,
+  SidebarProfile,
   DropdownMenu,
   IconButton,
   SearchField,
@@ -84,12 +87,35 @@ export default function ErpApp({ route }: { route: string }) {
   return (
     <AppShell
       sidebar={
-        <Sidebar header={<Workspace />} footer={<SidebarItem icon={<ArrowLeft />} label="Back to docs" href="#/introduction" />}>
+        <Sidebar
+          header={<Workspace />}
+          footer={
+            <>
+              <ul className="mb-2">
+                <SidebarItem icon={<ArrowLeft />} label="Back to docs" href="#/introduction" />
+              </ul>
+              <DropdownMenu
+                placement="top-start"
+                trigger={<SidebarProfile name="Ava Thompson" description="Sales manager" status="online" />}
+                items={[
+                  { label: 'Settings', icon: <Settings />, onSelect: () => (window.location.hash = '/demo/settings') },
+                  { label: 'Help & support', icon: <HelpCircle /> },
+                  { type: 'separator' },
+                  { label: 'Sign out', icon: <LogOut />, tone: 'danger' },
+                ]}
+              />
+            </>
+          }
+        >
           <SidebarSection>{item('dashboard', 'Dashboard', <Gauge />)}</SidebarSection>
           <SidebarSection title="Sales">
             {item('orders', 'Orders', <ShoppingCart />, pending)}
             {item('customers', 'Customers', <Users />)}
-            <SidebarItem icon={<Receipt />} label="Invoices" href="#/demo/orders" />
+            <SidebarItem icon={<Receipt />} label="Invoicing">
+              <SidebarItem label="Invoices" href="#/demo/orders" />
+              <SidebarItem label="Credit notes" href="#/demo/orders" />
+              <SidebarItem label="Payments" href="#/demo/orders" badge={3} />
+            </SidebarItem>
           </SidebarSection>
           <SidebarSection title="Operations">
             {item('inventory', 'Inventory', <Boxes />)}
@@ -127,6 +153,29 @@ export default function ErpApp({ route }: { route: string }) {
                   { label: 'Sign out', icon: <LogOut />, tone: 'danger' },
                 ]}
               />
+            </>
+          }
+        />
+      }
+      footer={
+        <Footer
+          variant="bar"
+          containerClassName="max-w-7xl lg:px-8"
+          brand="Acme ERP"
+          copyright="v4.12.0"
+          links={[
+            { label: 'Docs', href: '#/introduction' },
+            { label: 'Support', href: '#/demo/settings' },
+          ]}
+          meta={
+            <>
+              <Badge size="sm" tone="warning">
+                Demo data
+              </Badge>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="size-1.5 rounded-full bg-success" /> Synced 2 min ago
+              </span>
+              <span className="max-sm:hidden">EUR · Europe/Amsterdam</span>
             </>
           }
         />

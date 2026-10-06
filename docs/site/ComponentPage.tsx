@@ -32,14 +32,15 @@ export function ComponentPage({ doc }: { doc: ComponentDoc }) {
             <CodeBlock
               code={`<AppShell
   sidebar={
-    <Sidebar header={<Logo />} footer={<UserMenu />}>
+    <Sidebar header={<Logo />} footer={<SidebarProfile name="Ava Thompson" description="Admin" />}>
       <SidebarSection title="Sales">
         <SidebarItem icon={<Gauge />} label="Dashboard" href="/" active />
         <SidebarItem icon={<ShoppingCart />} label="Orders" href="/orders" badge={12} />
       </SidebarSection>
     </Sidebar>
   }
-  topbar={<Topbar start={<SearchField shortcut="k" />} end={<Avatar name="Ava Thompson" />} />}
+  topbar={<Topbar start={<SearchField shortcut="k" />} end={<NotificationsButton />} />}
+  footer={<Footer variant="bar" brand="Acme ERP" copyright="v4.12.0" meta="Synced 2 min ago" />}
 >
   <div className="p-6">
     <PageHeader title="Dashboard" actions={<Button variant="primary">New order</Button>} />

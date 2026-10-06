@@ -721,15 +721,16 @@ export const componentDocs: ComponentDoc[] = [
     title: 'App Shell',
     group: 'Navigation',
     description:
-      'Responsive application frame: a translucent sidebar (collapsible to icons on desktop, a drawer on tablets and phones) and a sticky top bar.',
-    import: "import { AppShell, Sidebar, SidebarSection, SidebarItem, Topbar, PageHeader } from 'focus-ui';",
+      'Responsive application frame that wires a Sidebar, a Topbar and an optional Footer together: the sidebar collapses to icons on desktop and becomes a drawer on tablets and phones.',
+    import: "import { AppShell, Sidebar, Topbar, Footer, PageHeader } from 'focus-ui';",
     examples: [],
     props: [
       {
         title: 'AppShell',
         props: [
-          { name: 'sidebar', type: 'ReactNode', description: 'Usually a <Sidebar>.' },
+          { name: 'sidebar', type: 'ReactNode', description: 'Usually a <Sidebar> — see the Sidebar page.' },
           { name: 'topbar', type: 'ReactNode', description: 'Usually a <Topbar>.' },
+          { name: 'footer', type: 'ReactNode', description: 'Below the content — usually <Footer variant="bar">.' },
           {
             name: 'defaultCollapsed',
             type: 'boolean',
@@ -739,50 +740,183 @@ export const componentDocs: ComponentDoc[] = [
         ],
       },
       {
+        title: 'Topbar',
+        props: [
+          {
+            name: 'start',
+            type: 'ReactNode',
+            description: 'Left content (breadcrumbs, search). The collapse / menu toggle is built in.',
+          },
+          { name: 'end', type: 'ReactNode', description: 'Right content (notifications, user menu).' },
+        ],
+      },
+      {
+        title: 'useAppShell()',
+        props: [
+          { name: 'collapsed / setCollapsed', type: 'boolean / fn', description: 'Desktop icon-only state.' },
+          { name: 'mobileOpen / setMobileOpen', type: 'boolean / fn', description: 'Mobile drawer state.' },
+          { name: 'isDesktop', type: 'boolean', description: 'true at ≥ 1024px.' },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'sidebar',
+    title: 'Sidebar',
+    group: 'Navigation',
+    description:
+      'macOS-style source list for module navigation: sections, badges, nested sub-menus, icon-only collapsed mode with tooltips and flyouts, and a profile footer. Works inside AppShell or standalone in any layout.',
+    import: "import { Sidebar, SidebarSection, SidebarItem, SidebarProfile } from 'focus-ui';",
+    examples: [
+      {
+        file: 'sidebar/Basic',
+        title: 'ERP navigation',
+        description:
+          'Sections (one collapsible, one with an action), counters, nested sub-menus, a disabled item and an account menu in the footer.',
+      },
+      {
+        file: 'sidebar/Collapsed',
+        title: 'Collapsed (icon-only)',
+        description: 'Inside AppShell the Topbar toggle drives this; standalone, pass collapsed yourself.',
+      },
+    ],
+    props: [
+      {
         title: 'Sidebar',
         props: [
-          { name: 'header', type: 'ReactNode', description: 'Logo / workspace switcher.' },
-          { name: 'footer', type: 'ReactNode', description: 'User profile, settings.' },
+          { name: 'header', type: 'ReactNode', description: 'Logo / workspace or company switcher.' },
+          { name: 'footer', type: 'ReactNode', description: 'User profile, settings, help.' },
+          {
+            name: 'collapsed',
+            type: 'boolean',
+            description: 'Icon-only mode. Defaults to the AppShell state, or false standalone.',
+          },
+          { name: 'label', type: 'string', default: "'Main'", description: 'Accessible name of the <nav> landmark.' },
         ],
       },
       {
         title: 'SidebarSection',
         props: [
-          { name: 'title', type: 'ReactNode', description: 'Section heading.' },
+          { name: 'title', type: 'ReactNode', description: 'Section heading (hidden when collapsed).' },
           { name: 'collapsible', type: 'boolean', description: 'Toggle by clicking the title.' },
+          { name: 'defaultOpen', type: 'boolean', default: 'true', description: 'Initial state when collapsible.' },
+          { name: 'action', type: 'ReactNode', description: 'Control next to the title, e.g. a “+” IconButton.' },
         ],
       },
       {
         title: 'SidebarItem',
         props: [
-          { name: 'icon', type: 'ReactNode', description: 'Icon (shown alone when collapsed, with tooltip).' },
-          { name: 'label', type: 'ReactNode', description: 'Text.' },
-          { name: 'active', type: 'boolean', description: 'Current page.' },
-          { name: 'badge', type: 'ReactNode', description: 'Count, e.g. pending approvals.' },
+          { name: 'label', type: 'ReactNode', description: 'Text (tooltip when collapsed).' },
+          { name: 'icon', type: 'ReactNode', description: 'Leading icon.' },
+          { name: 'active', type: 'boolean', description: 'Current page (aria-current="page").' },
+          { name: 'badge', type: 'ReactNode', description: 'Counter, e.g. pending approvals.' },
           {
-            name: '...props',
-            type: 'AnchorHTMLAttributes',
-            description: 'href, onClick… Render your router link by passing href.',
+            name: 'children',
+            type: 'SidebarItem[]',
+            description: 'Nested items → expandable sub-menu; a flyout when collapsed.',
+          },
+          {
+            name: 'defaultOpen',
+            type: 'boolean',
+            description: 'Sub-menu initial state. Opens automatically when a child is active.',
+          },
+          {
+            name: 'as / to',
+            type: 'ElementType / string',
+            description: 'Router integration: as={Link} to="/orders" (React Router, Next.js…).',
+          },
+          { name: 'disabled', type: 'boolean', description: 'Greyed out and not clickable.' },
+          { name: '...props', type: 'AnchorHTMLAttributes', description: 'href, onClick, target…' },
+        ],
+      },
+      {
+        title: 'SidebarProfile',
+        props: [
+          { name: 'name', type: 'string', description: 'User name (avatar initials).' },
+          { name: 'description', type: 'ReactNode', description: 'Email, role or company.' },
+          { name: 'avatarSrc', type: 'string', description: 'Photo URL.' },
+          { name: 'status', type: "'online' | 'away' | 'busy' | 'offline'", description: 'Presence dot.' },
+          { name: 'trailing', type: 'ReactNode', description: 'Replaces the default chevron.' },
+        ],
+      },
+    ],
+    guidelines: [
+      'Group items by business domain (Sales, Operations, Finance) and keep 5–9 items per section.',
+      'Use badges for actionable counts only (approvals, exceptions) — not totals.',
+      'Limit nesting to one level; deeper hierarchies belong in Tabs or the page itself.',
+      'Every item needs an icon so the collapsed mode stays usable.',
+    ],
+  },
+  {
+    slug: 'footer',
+    title: 'Footer & Action Bar',
+    group: 'Navigation',
+    description:
+      'Footer comes in three densities — a full link-column footer for portals, a single-row page footer, and a compact status bar for app shells. ActionBar is the contextual footer for forms: save / discard when there are unsaved changes.',
+    import: "import { Footer, ActionBar } from 'focus-ui';",
+    examples: [
+      {
+        file: 'footer/StatusBar',
+        title: 'Status bar',
+        description: 'variant="bar" — pass it to AppShell footer for version, environment and sync status.',
+        bleed: true,
+      },
+      { file: 'footer/Simple', title: 'Simple', description: 'One row: brand, copyright, links and meta.', bleed: true },
+      {
+        file: 'footer/Columns',
+        title: 'Columns',
+        description: 'Customer- and supplier-facing portals. Columns reflow from 4 → 3 → 2 on smaller screens.',
+        bleed: true,
+      },
+      {
+        file: 'footer/ActionBarForm',
+        title: 'Action bar — sticky form footer',
+        description: 'Appears only when the form is dirty and sticks to the bottom of the scroll area.',
+      },
+      {
+        file: 'footer/ActionBarFloating',
+        title: 'Action bar — floating',
+        description: 'A pill fixed to the bottom of the viewport, for full-page editors.',
+      },
+    ],
+    props: [
+      {
+        title: 'Footer',
+        props: [
+          {
+            name: 'variant',
+            type: "'columns' | 'simple' | 'bar'",
+            default: 'columns if columns given, else simple',
+            description: 'Density.',
+          },
+          { name: 'brand', type: 'ReactNode', description: 'Logo or product name.' },
+          { name: 'description', type: 'ReactNode', description: 'Text under the brand (columns).' },
+          { name: 'columns', type: '{ title: ReactNode; links: FooterLink[] }[]', description: 'Link groups.' },
+          { name: 'links', type: 'FooterLink[]', description: 'Inline links — { label, href?, onClick?, external? }.' },
+          { name: 'copyright', type: 'ReactNode', description: 'Copyright line.' },
+          { name: 'meta', type: 'ReactNode', description: 'Right side: version, status, locale, social icons.' },
+          { name: 'containerClassName', type: 'string', description: 'Constrain the inner width, e.g. "max-w-7xl".' },
+        ],
+      },
+      {
+        title: 'ActionBar',
+        props: [
+          { name: 'open', type: 'boolean', description: 'Visibility (animated in/out).' },
+          { name: 'message', type: 'ReactNode', description: 'Left text, e.g. “Unsaved changes”.' },
+          { name: 'actions', type: 'ReactNode', description: 'Buttons on the right.' },
+          {
+            name: 'variant',
+            type: "'floating' | 'sticky'",
+            default: "'floating'",
+            description: 'Viewport pill, or a bar stuck to the bottom of its scroll container.',
           },
         ],
       },
-      {
-        title: 'Topbar',
-        props: [
-          { name: 'start', type: 'ReactNode', description: 'Left content (breadcrumbs, search).' },
-          { name: 'end', type: 'ReactNode', description: 'Right content (notifications, user menu).' },
-        ],
-      },
-      {
-        title: 'PageHeader',
-        props: [
-          { name: 'title', type: 'ReactNode', description: 'Page title.' },
-          { name: 'breadcrumbs', type: 'ReactNode', description: 'Above the title.' },
-          { name: 'meta', type: 'ReactNode', description: 'Inline next to the title (status badge).' },
-          { name: 'description', type: 'ReactNode', description: 'Subtitle.' },
-          { name: 'actions', type: 'ReactNode', description: 'Right-aligned buttons; wrap under the title on phones.' },
-        ],
-      },
+    ],
+    guidelines: [
+      'Use the bar variant inside apps; reserve the columns footer for portals and public pages.',
+      'Show ActionBar only while there are unsaved changes, and always offer a way to discard.',
+      'Put the primary action (Save) last, on the right.',
     ],
   },
   {

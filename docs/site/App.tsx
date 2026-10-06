@@ -3,6 +3,7 @@ import {
   AppShell,
   Badge,
   DropdownMenu,
+  Footer,
   IconButton,
   SearchField,
   Sidebar,
@@ -150,6 +151,19 @@ export function App() {
               />
             </>
           }
+        />
+      }
+      footer={
+        <Footer
+          containerClassName="max-w-5xl sm:px-8"
+          brand="Focus UI"
+          copyright="© 2026 · MIT License"
+          links={[
+            { label: 'GitHub', href: 'https://github.com/jkpeyi/focus-ui', external: true },
+            { label: 'Installation', href: '#/installation' },
+            { label: 'ERP demo', href: '#/demo' },
+          ]}
+          meta={<span className="text-[13px] text-fg-subtle">Built with Focus UI · React · Tailwind CSS v4</span>}
         />
       }
     >

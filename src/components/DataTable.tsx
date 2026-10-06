@@ -370,7 +370,7 @@ export function DataTable<T>({
       )}
       {selectable && bulkActions && selectedRows.length > 0 && (
         <Portal>
-          <div className="pointer-events-none fixed inset-x-0 bottom-[max(1.5rem,env(safe-area-inset-bottom))] z-40 flex justify-center px-4">
+          <div className="pointer-events-none fixed inset-x-0 bottom-[max(3.5rem,calc(env(safe-area-inset-bottom)+1rem))] z-40 flex justify-center px-4">
             <div
               role="toolbar"
               aria-label="Bulk actions"
