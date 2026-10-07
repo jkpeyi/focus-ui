@@ -1,4 +1,4 @@
-import { ProgressRing } from 'focus-ui';
+import { ProgressRing } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

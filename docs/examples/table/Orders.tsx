@@ -12,7 +12,7 @@ import {
   formatDate,
   useToast,
   type DataTableColumn,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 import { Archive, FileDown, MoreHorizontal, Printer } from 'lucide-react';
 import { orders, statusMeta, type Order } from '../../demo/data';
 

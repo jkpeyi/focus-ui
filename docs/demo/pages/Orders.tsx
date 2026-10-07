@@ -21,7 +21,7 @@ import {
   formatDate,
   useToast,
   type DataTableColumn,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 import { Archive, ExternalLink, FileDown, ListFilter, MoreHorizontal, Plus, Printer, XCircle } from 'lucide-react';
 import { orders, type Order, type OrderStatus } from '../data';
 import { StatusBadge, eur, go } from '../shared';

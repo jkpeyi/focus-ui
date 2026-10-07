@@ -1,4 +1,4 @@
-import { Badge, Button, Card } from 'focus-ui';
+import { Badge, Button, Card } from '@jkpeyi/focus-ui';
 import { ArrowRight, Boxes, Gauge, Layers, Moon, MousePointerClick, Palette, Smartphone, Table2 } from 'lucide-react';
 import { navigate } from '../../site/router';
 import { H2, P } from './Prose';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Highlight, themes } from 'prism-react-renderer';
-import { cn, IconButton, useTheme } from 'focus-ui';
+import { cn, IconButton, useTheme } from '@jkpeyi/focus-ui';
 import { Check, Copy } from 'lucide-react';
 
 export function CodeBlock({ code, language = 'tsx', className }: { code: string; language?: string; className?: string }) {

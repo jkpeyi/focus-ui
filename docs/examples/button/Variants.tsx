@@ -1,4 +1,4 @@
-import { Button } from 'focus-ui';
+import { Button } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

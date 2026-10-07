@@ -1,4 +1,4 @@
-import { SegmentedControl, useTheme, type ThemeMode } from 'focus-ui';
+import { SegmentedControl, useTheme, type ThemeMode } from '@jkpeyi/focus-ui';
 import { Monitor, Moon, Sun } from 'lucide-react';
 
 export default function Example() {

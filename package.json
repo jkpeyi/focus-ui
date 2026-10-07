@@ -1,5 +1,5 @@
 {
-  "name": "focus-ui",
+  "name": "@jkpeyi/focus-ui",
   "version": "0.1.0",
   "description": "Modern, elegant, Apple-inspired React component library for enterprise & ERP web platforms. Tailwind CSS at its core.",
   "license": "MIT",
@@ -20,7 +20,9 @@
     "./styles.css": "./dist/focus-ui.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "dev": "vite --config vite.docs.config.ts",
@@ -32,7 +34,8 @@
     "preview:docs": "vite preview --config vite.docs.config.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -76,5 +79,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jkpeyi/focus-ui.git"
+  },
+  "homepage": "https://jkpeyi.github.io/focus-ui/",
+  "bugs": {
+    "url": "https://github.com/jkpeyi/focus-ui/issues"
+  },
+  "author": "jkpeyi",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

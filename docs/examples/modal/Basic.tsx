@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Field, Input, Modal, Select, Textarea, useToast } from 'focus-ui';
+import { Button, Field, Input, Modal, Select, Textarea, useToast } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [open, setOpen] = useState(false);

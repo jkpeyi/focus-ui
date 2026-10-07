@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, Tabs } from 'focus-ui';
+import { Tab, TabList, TabPanel, Tabs } from '@jkpeyi/focus-ui';
 import { Boxes, Receipt, Truck } from 'lucide-react';
 
 export default function Example() {

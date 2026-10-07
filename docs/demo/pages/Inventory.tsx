@@ -1,5 +1,14 @@
 import { useState } from 'react';
-import { Badge, Button, DataTable, PageHeader, Progress, SegmentedControl, StatCard, type DataTableColumn } from 'focus-ui';
+import {
+  Badge,
+  Button,
+  DataTable,
+  PageHeader,
+  Progress,
+  SegmentedControl,
+  StatCard,
+  type DataTableColumn,
+} from '@jkpeyi/focus-ui';
 import { AlertTriangle, Boxes, Euro, Plus, RefreshCw } from 'lucide-react';
 import { products, type Product } from '../data';
 import { eur } from '../shared';

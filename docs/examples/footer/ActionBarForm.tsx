@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ActionBar, Button, Card, Field, Input, Select, useToast } from 'focus-ui';
+import { ActionBar, Button, Card, Field, Input, Select, useToast } from '@jkpeyi/focus-ui';
 
 const initial = { name: 'Northwind Traders', terms: 'net30', limit: '250000' };
 

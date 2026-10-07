@@ -1,4 +1,4 @@
-import { Badge, Breadcrumbs, Button, DropdownMenu, IconButton, PageHeader } from 'focus-ui';
+import { Badge, Breadcrumbs, Button, DropdownMenu, IconButton, PageHeader } from '@jkpeyi/focus-ui';
 import { MoreHorizontal, Printer, Send } from 'lucide-react';
 
 export default function Example() {

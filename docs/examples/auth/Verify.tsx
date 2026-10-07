@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Alert, AuthLayout, Button, OtpInput } from 'focus-ui';
+import { Alert, AuthLayout, Button, OtpInput } from '@jkpeyi/focus-ui';
 import { ArrowLeft, MailCheck } from 'lucide-react';
 
 const DEMO_CODE = '123456';

@@ -29,7 +29,7 @@ import {
   cn,
   useToast,
   type DataTableColumn,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 
 describe('cn', () => {
   it('lets later Tailwind classes win', () => {

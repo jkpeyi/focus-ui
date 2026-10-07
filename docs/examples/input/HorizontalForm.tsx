@@ -1,4 +1,4 @@
-import { Button, Divider, Field, Input, Select } from 'focus-ui';
+import { Button, Divider, Field, Input, Select } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

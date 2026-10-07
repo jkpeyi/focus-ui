@@ -1,4 +1,4 @@
-import { Field, PasswordInput } from 'focus-ui';
+import { Field, PasswordInput } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

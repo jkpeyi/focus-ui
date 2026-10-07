@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ActionBar, Button, Switch } from 'focus-ui';
+import { ActionBar, Button, Switch } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [open, setOpen] = useState(false);

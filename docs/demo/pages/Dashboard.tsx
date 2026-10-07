@@ -12,7 +12,7 @@ import {
   Timeline,
   formatDate,
   useToast,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 import { CheckCircle2, Clock, CreditCard, Download, Euro, Package, Plus, ShoppingCart, Truck } from 'lucide-react';
 import { BarChart } from '../BarChart';
 import { months, orders, products, revenueByMonth } from '../data';

@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardFooter, CardHeader, DescriptionList, IconButton } from 'focus-ui';
+import { Button, Card, CardContent, CardFooter, CardHeader, DescriptionList, IconButton } from '@jkpeyi/focus-ui';
 import { MoreHorizontal } from 'lucide-react';
 
 export default function Example() {

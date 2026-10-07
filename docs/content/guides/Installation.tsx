@@ -1,4 +1,4 @@
-import { Alert } from 'focus-ui';
+import { Alert } from '@jkpeyi/focus-ui';
 import { Code, H2, H3, List, P, Snippet } from './Prose';
 
 export function Installation() {
@@ -11,7 +11,10 @@ export function Installation() {
       </P>
 
       <H2>1. Install the package</H2>
-      <Snippet language="bash" code={`npm install focus-ui\n# or\npnpm add focus-ui\n# or\nyarn add focus-ui`} />
+      <Snippet
+        language="bash"
+        code={`npm install @jkpeyi/focus-ui\n# or\npnpm add @jkpeyi/focus-ui\n# or\nyarn add @jkpeyi/focus-ui`}
+      />
 
       <H2>2a. With Tailwind CSS v4 (recommended)</H2>
       <P>
@@ -23,10 +26,10 @@ export function Installation() {
         language="css"
         code={`/* src/index.css */
 @import "tailwindcss";
-@import "focus-ui/theme.css";
+@import "@jkpeyi/focus-ui/theme.css";
 
 /* Path is relative to this CSS file */
-@source "../node_modules/focus-ui/dist";`}
+@source "../node_modules/@jkpeyi/focus-ui/dist";`}
       />
       <Alert tone="info" title="Using Vite?">
         Add <Code>@tailwindcss/vite</Code> to your plugins. With Next.js use <Code>@tailwindcss/postcss</Code>.
@@ -36,7 +39,7 @@ export function Installation() {
       <P>
         Import the precompiled stylesheet once. It contains Tailwind’s preflight, the tokens and every class the components need.
       </P>
-      <Snippet code={`// main.tsx\nimport 'focus-ui/styles.css';`} />
+      <Snippet code={`// main.tsx\nimport '@jkpeyi/focus-ui/styles.css';`} />
 
       <H2>3. Wrap your app</H2>
       <P>
@@ -44,7 +47,7 @@ export function Installation() {
         enables <Code>useToast()</Code>. Both are optional.
       </P>
       <Snippet
-        code={`import { ThemeProvider, ToastProvider } from 'focus-ui';
+        code={`import { ThemeProvider, ToastProvider } from '@jkpeyi/focus-ui';
 
 export function Root() {
   return (
@@ -59,7 +62,7 @@ export function Root() {
 
       <H2>4. Build something</H2>
       <Snippet
-        code={`import { Button, Card, CardHeader, CardContent, StatCard, formatCurrency } from 'focus-ui';
+        code={`import { Button, Card, CardHeader, CardContent, StatCard, formatCurrency } from '@jkpeyi/focus-ui';
 
 export function Dashboard() {
   return (

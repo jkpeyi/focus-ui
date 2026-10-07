@@ -1,4 +1,4 @@
-import { Badge } from 'focus-ui';
+import { Badge } from '@jkpeyi/focus-ui';
 
 const statuses = [
   { label: 'Draft', tone: 'neutral' },

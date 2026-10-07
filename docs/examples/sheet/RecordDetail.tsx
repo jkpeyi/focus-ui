@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Avatar, Badge, Button, DescriptionList, Sheet, Timeline } from 'focus-ui';
+import { Avatar, Badge, Button, DescriptionList, Sheet, Timeline } from '@jkpeyi/focus-ui';
 import { Mail, Phone } from 'lucide-react';
 
 export default function Example() {

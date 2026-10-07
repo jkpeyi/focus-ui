@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, DropdownMenu, IconButton, useToast } from 'focus-ui';
+import { Button, DropdownMenu, IconButton, useToast } from '@jkpeyi/focus-ui';
 import { Archive, ChevronDown, Copy, FileDown, MoreHorizontal, Pencil, Printer, Trash2 } from 'lucide-react';
 
 export default function Example() {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DropdownMenu, IconButton, Sidebar, SidebarItem, SidebarProfile, SidebarSection } from 'focus-ui';
+import { DropdownMenu, IconButton, Sidebar, SidebarItem, SidebarProfile, SidebarSection } from '@jkpeyi/focus-ui';
 import {
   BarChart3,
   Boxes,

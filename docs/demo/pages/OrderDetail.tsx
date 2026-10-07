@@ -23,7 +23,7 @@ import {
   Timeline,
   formatDate,
   useToast,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 import { CheckCircle2, Copy, FileText, MoreHorizontal, Printer, Send, Truck, XCircle } from 'lucide-react';
 import { orders, type OrderStatus } from '../data';
 import { StatusBadge, eur, go } from '../shared';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Checkbox } from 'focus-ui';
+import { Checkbox } from '@jkpeyi/focus-ui';
 
 const modules = ['Sales', 'Purchasing', 'Inventory', 'Accounting'];
 

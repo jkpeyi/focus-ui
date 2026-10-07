@@ -64,7 +64,7 @@ export function Theming() {
       <Snippet
         language="css"
         code={`@import "tailwindcss";
-@import "focus-ui/theme.css";
+@import "@jkpeyi/focus-ui/theme.css";
 
 :root {
   --fx-accent: #6d28d9;        /* your brand */

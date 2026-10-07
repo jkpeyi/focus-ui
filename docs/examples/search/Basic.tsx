@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SearchField } from 'focus-ui';
+import { SearchField } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [q, setQ] = useState('');

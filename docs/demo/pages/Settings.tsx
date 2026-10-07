@@ -17,7 +17,7 @@ import {
   TabPanel,
   Tabs,
   useToast,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 
 export function SettingsPage() {
   const { toast } = useToast();

@@ -1,4 +1,4 @@
-import { Input } from 'focus-ui';
+import { Input } from '@jkpeyi/focus-ui';
 import { Mail } from 'lucide-react';
 
 export default function Example() {

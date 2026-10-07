@@ -1,4 +1,4 @@
-import { Button, IconButton, Tooltip } from 'focus-ui';
+import { Button, IconButton, Tooltip } from '@jkpeyi/focus-ui';
 import { Info, Printer } from 'lucide-react';
 
 export default function Example() {

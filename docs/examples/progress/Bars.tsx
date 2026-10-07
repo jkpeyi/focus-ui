@@ -1,4 +1,4 @@
-import { Progress } from 'focus-ui';
+import { Progress } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

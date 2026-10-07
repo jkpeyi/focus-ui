@@ -3,14 +3,14 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { fileURLToPath } from 'node:url';
 
-/** Documentation site. `focus-ui` resolves to the local source for live editing. */
+/** Documentation site. `@jkpeyi/focus-ui` resolves to the local source for live editing. */
 export default defineConfig({
   root: 'docs',
   base: './',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      'focus-ui': fileURLToPath(new URL('./src/index.ts', import.meta.url)),
+      '@jkpeyi/focus-ui': fileURLToPath(new URL('./src/index.ts', import.meta.url)),
     },
   },
   build: {

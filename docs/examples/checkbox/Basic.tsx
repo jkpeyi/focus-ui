@@ -1,4 +1,4 @@
-import { Checkbox } from 'focus-ui';
+import { Checkbox } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

@@ -1,4 +1,4 @@
-import { Card, DescriptionList } from 'focus-ui';
+import { Card, DescriptionList } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

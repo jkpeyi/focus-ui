@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, ConfirmDialog, useToast } from 'focus-ui';
+import { Button, ConfirmDialog, useToast } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [open, setOpen] = useState(false);

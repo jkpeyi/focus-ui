@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Sidebar, SidebarItem, SidebarProfile, SidebarSection } from 'focus-ui';
+import { Button, Sidebar, SidebarItem, SidebarProfile, SidebarSection } from '@jkpeyi/focus-ui';
 import { Boxes, Gauge, PanelLeftClose, PanelLeftOpen, Receipt, Settings, ShoppingCart, Users } from 'lucide-react';
 
 export default function Example() {

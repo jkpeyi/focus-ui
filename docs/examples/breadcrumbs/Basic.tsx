@@ -1,4 +1,4 @@
-import { Breadcrumbs } from 'focus-ui';
+import { Breadcrumbs } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return <Breadcrumbs items={[{ label: 'Sales', href: '#' }, { label: 'Orders', href: '#' }, { label: 'SO-24180' }]} />;

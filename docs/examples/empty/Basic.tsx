@@ -1,4 +1,4 @@
-import { Button, Card, EmptyState } from 'focus-ui';
+import { Button, Card, EmptyState } from '@jkpeyi/focus-ui';
 import { FileText, Plus } from 'lucide-react';
 
 export default function Example() {

@@ -12,7 +12,7 @@ import {
   SidebarSection,
   Topbar,
   useTheme,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 import {
   ArrowLeft,
   Bell,

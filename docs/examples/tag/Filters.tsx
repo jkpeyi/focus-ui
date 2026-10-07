@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Tag } from 'focus-ui';
+import { Button, Tag } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [filters, setFilters] = useState(['Status: Pending', 'Warehouse: Rotterdam', 'Owner: Me']);

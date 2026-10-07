@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from 'focus-ui';
+import { Button } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [posting, setPosting] = useState(false);

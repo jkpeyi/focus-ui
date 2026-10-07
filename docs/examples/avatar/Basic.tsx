@@ -1,4 +1,4 @@
-import { Avatar } from 'focus-ui';
+import { Avatar } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

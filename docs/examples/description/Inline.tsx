@@ -1,4 +1,4 @@
-import { Badge, Card, DescriptionList } from 'focus-ui';
+import { Badge, Card, DescriptionList } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

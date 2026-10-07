@@ -1,4 +1,4 @@
-import { Button, Spinner } from 'focus-ui';
+import { Button, Spinner } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

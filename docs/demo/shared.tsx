@@ -1,4 +1,4 @@
-import { Badge } from 'focus-ui';
+import { Badge } from '@jkpeyi/focus-ui';
 import { statusMeta, type OrderStatus } from './data';
 
 export function StatusBadge({ status }: { status: OrderStatus }) {

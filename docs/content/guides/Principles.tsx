@@ -1,4 +1,4 @@
-import { Card } from 'focus-ui';
+import { Card } from '@jkpeyi/focus-ui';
 import { H2, List, P } from './Prose';
 
 const principles = [

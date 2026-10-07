@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SegmentedControl } from 'focus-ui';
+import { SegmentedControl } from '@jkpeyi/focus-ui';
 import { LayoutGrid, List, Rows3 } from 'lucide-react';
 
 export default function Example() {

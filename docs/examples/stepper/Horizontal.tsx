@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Stepper } from 'focus-ui';
+import { Button, Stepper } from '@jkpeyi/focus-ui';
 
 const steps = [
   { label: 'Draft', description: 'Sep 30' },

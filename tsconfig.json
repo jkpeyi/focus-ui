@@ -16,7 +16,7 @@
     "types": ["vite/client", "node", "vitest/globals", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
-      "focus-ui": ["./src/index.ts"]
+      "@jkpeyi/focus-ui": ["./src/index.ts"]
     }
   },
   "include": ["src", "docs", "tests", "vite.config.ts", "vite.docs.config.ts", "vitest.config.ts"]

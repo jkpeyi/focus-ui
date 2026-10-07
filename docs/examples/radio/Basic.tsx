@@ -1,4 +1,4 @@
-import { RadioGroup } from 'focus-ui';
+import { RadioGroup } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

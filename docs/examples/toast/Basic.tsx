@@ -1,4 +1,4 @@
-import { Button, useToast } from 'focus-ui';
+import { Button, useToast } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const { toast } = useToast();

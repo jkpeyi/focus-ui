@@ -1,4 +1,4 @@
-import { Button } from 'focus-ui';
+import { Button } from '@jkpeyi/focus-ui';
 import { ChevronDown, Download, Plus } from 'lucide-react';
 
 export default function Example() {

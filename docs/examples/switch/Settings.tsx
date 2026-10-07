@@ -1,4 +1,4 @@
-import { Card, Switch } from 'focus-ui';
+import { Card, Switch } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

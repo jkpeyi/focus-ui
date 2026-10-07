@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, DataTable, EmptyState, SegmentedControl, type DataTableColumn } from 'focus-ui';
+import { Button, DataTable, EmptyState, SegmentedControl, type DataTableColumn } from '@jkpeyi/focus-ui';
 import { PackageSearch } from 'lucide-react';
 import { products, type Product } from '../../demo/data';
 

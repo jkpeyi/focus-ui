@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Badge, DataTable, SegmentedControl, formatCurrency, type DataTableColumn } from 'focus-ui';
+import { Badge, DataTable, SegmentedControl, formatCurrency, type DataTableColumn } from '@jkpeyi/focus-ui';
 import { products, type Product } from '../../demo/data';
 
 const columns: DataTableColumn<Product>[] = [

@@ -1,4 +1,4 @@
-import { Footer } from 'focus-ui';
+import { Footer } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

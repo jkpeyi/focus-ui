@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { cn } from 'focus-ui';
+import { cn } from '@jkpeyi/focus-ui';
 
 export interface BarChartProps {
   values: number[];

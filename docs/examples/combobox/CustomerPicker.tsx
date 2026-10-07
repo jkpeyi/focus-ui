@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Avatar, Combobox, Field } from 'focus-ui';
+import { Avatar, Combobox, Field } from '@jkpeyi/focus-ui';
 import { customers } from '../../demo/data';
 
 export default function Example() {

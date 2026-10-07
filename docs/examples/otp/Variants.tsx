@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Field, OtpInput } from 'focus-ui';
+import { Field, OtpInput } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [code, setCode] = useState('');

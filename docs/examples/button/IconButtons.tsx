@@ -1,4 +1,4 @@
-import { IconButton } from 'focus-ui';
+import { IconButton } from '@jkpeyi/focus-ui';
 import { Bell, Filter, MoreHorizontal, Pencil, Plus, Trash2 } from 'lucide-react';
 
 export default function Example() {

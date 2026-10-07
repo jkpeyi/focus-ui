@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: { 'focus-ui': fileURLToPath(new URL('./src/index.ts', import.meta.url)) },
+    alias: { '@jkpeyi/focus-ui': fileURLToPath(new URL('./src/index.ts', import.meta.url)) },
   },
   test: {
     environment: 'jsdom',

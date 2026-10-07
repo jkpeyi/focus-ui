@@ -4,8 +4,8 @@
  * Usage (in your app's main CSS file):
  *
  *   @import "tailwindcss";
- *   @import "focus-ui/theme.css";
- *   @source "../node_modules/focus-ui/dist";
+ *   @import "@jkpeyi/focus-ui/theme.css";
+ *   @source "../node_modules/@jkpeyi/focus-ui/dist";
  *
  * Every token is a CSS variable prefixed with `--fx-`. Override any of them on
  * `:root` (light) or `.dark` (dark) to rebrand the whole library.

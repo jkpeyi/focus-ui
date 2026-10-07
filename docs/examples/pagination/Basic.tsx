@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Pagination } from 'focus-ui';
+import { Pagination } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [page, setPage] = useState(4);

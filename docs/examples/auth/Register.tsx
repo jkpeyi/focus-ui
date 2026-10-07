@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { AuthLayout, Avatar, Button, Checkbox, Field, Input, PasswordInput, Select, getPasswordStrength } from 'focus-ui';
+import { AuthLayout, Avatar, Button, Checkbox, Field, Input, PasswordInput, Select, getPasswordStrength } from '@jkpeyi/focus-ui';
 import { BarChart3, Boxes, ShieldCheck } from 'lucide-react';
 import { AcmeLogo } from './Logo';
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Badge, Button, Checkbox, Divider, Popover } from 'focus-ui';
+import { Badge, Button, Checkbox, Divider, Popover } from '@jkpeyi/focus-ui';
 import { ListFilter } from 'lucide-react';
 
 const all = ['Draft', 'Pending approval', 'Approved', 'Shipped', 'Delivered'];

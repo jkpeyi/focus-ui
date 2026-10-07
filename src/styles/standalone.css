@@ -1,6 +1,6 @@
 /*
  * Pre-compiled stylesheet for apps that do not run Tailwind themselves.
- * Built to dist/focus-ui.css — import it once: `import "focus-ui/styles.css"`.
+ * Built to dist/focus-ui.css — import it once: `import "@jkpeyi/focus-ui/styles.css"`.
  */
 @import 'tailwindcss';
 @import './theme.css';

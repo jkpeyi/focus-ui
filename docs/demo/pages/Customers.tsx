@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Avatar, Badge, Button, Card, DataTable, PageHeader, Progress, SearchField, SegmentedControl } from 'focus-ui';
+import { Avatar, Badge, Button, Card, DataTable, PageHeader, Progress, SearchField, SegmentedControl } from '@jkpeyi/focus-ui';
 import { LayoutGrid, List, Mail, Plus } from 'lucide-react';
 import { customers } from '../data';
 import { eur } from '../shared';

@@ -1,4 +1,4 @@
-import { Badge, Footer } from 'focus-ui';
+import { Badge, Footer } from '@jkpeyi/focus-ui';
 import { CloudCheck } from 'lucide-react';
 
 export default function Example() {

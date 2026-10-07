@@ -29,7 +29,7 @@
 ## Quick start
 
 ```bash
-npm install focus-ui
+npm install @jkpeyi/focus-ui
 ```
 
 ### With Tailwind CSS v4 (recommended)
@@ -37,22 +37,22 @@ npm install focus-ui
 ```css
 /* src/index.css */
 @import 'tailwindcss';
-@import 'focus-ui/theme.css';
+@import '@jkpeyi/focus-ui/theme.css';
 
 /* Let Tailwind see the classes used by the components (path relative to this file) */
-@source "../node_modules/focus-ui/dist";
+@source "../node_modules/@jkpeyi/focus-ui/dist";
 ```
 
 ### Without Tailwind
 
 ```ts
-import 'focus-ui/styles.css'; // precompiled: preflight + tokens + component styles
+import '@jkpeyi/focus-ui/styles.css'; // precompiled: preflight + tokens + component styles
 ```
 
 ### Wrap your app (optional providers)
 
 ```tsx
-import { ThemeProvider, ToastProvider } from 'focus-ui';
+import { ThemeProvider, ToastProvider } from '@jkpeyi/focus-ui';
 
 createRoot(root).render(
   <ThemeProvider defaultMode="system">
@@ -128,7 +128,7 @@ Utilities: `focus-ring` (soft focus halo), `material` (translucent blurred surfa
 
 ```css
 @import 'tailwindcss';
-@import 'focus-ui/theme.css';
+@import '@jkpeyi/focus-ui/theme.css';
 
 :root {
   --fx-accent: #6d28d9;
@@ -147,7 +147,7 @@ Utilities: `focus-ring` (soft focus halo), `material` (translucent blurred surfa
 ### Data table with selection, totals and bulk actions
 
 ```tsx
-import { Badge, Button, DataTable, formatCurrency, type DataTableColumn } from 'focus-ui';
+import { Badge, Button, DataTable, formatCurrency, type DataTableColumn } from '@jkpeyi/focus-ui';
 
 const columns: DataTableColumn<Order>[] = [
   { id: 'number', header: 'Order', sortable: true, sticky: true },
@@ -308,8 +308,8 @@ src/
   components/      # one file per component
   hooks/           # reusable hooks (floating positioning, focus trap…)
   styles/
-    theme.css      # design tokens → Tailwind @theme (shipped as focus-ui/theme.css)
-    standalone.css # entry for the precompiled focus-ui/styles.css
+    theme.css      # design tokens → Tailwind @theme (shipped as @jkpeyi/focus-ui/theme.css)
+    standalone.css # entry for the precompiled @jkpeyi/focus-ui/styles.css
   utils/           # cn, formatters, mergeRefs
   index.ts         # public API
 docs/

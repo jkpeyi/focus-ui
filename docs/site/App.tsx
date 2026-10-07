@@ -12,7 +12,7 @@ import {
   Spinner,
   Topbar,
   useTheme,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 import { BookOpen, Compass, LayoutDashboard, Monitor, Moon, Paintbrush, Rocket, Sun } from 'lucide-react';
 import { componentDocs, groups } from '../content/components';
 import { Installation } from '../content/guides/Installation';

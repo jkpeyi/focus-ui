@@ -32,7 +32,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Button',
     group: 'Foundations',
     description: 'Triggers an action. Six variants map to clear intent levels — use one primary action per view.',
-    import: "import { Button, IconButton } from 'focus-ui';",
+    import: "import { Button, IconButton } from '@jkpeyi/focus-ui';",
     examples: [
       {
         file: 'button/Variants',
@@ -105,7 +105,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Badge',
     group: 'Foundations',
     description: 'Compact status label. The dot variant is the recommended way to show document states (orders, invoices, POs).',
-    import: "import { Badge } from 'focus-ui';",
+    import: "import { Badge } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'badge/Tones', title: 'Tones' },
       { file: 'badge/Variants', title: 'Solid & outline' },
@@ -138,7 +138,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Foundations',
     description:
       'Represents a person or organization. Falls back to initials on a deterministic gradient when no image is available.',
-    import: "import { Avatar, AvatarGroup } from 'focus-ui';",
+    import: "import { Avatar, AvatarGroup } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'avatar/Basic', title: 'Sizes, status & shape' },
       { file: 'avatar/Group', title: 'Group' },
@@ -168,7 +168,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Card',
     group: 'Foundations',
     description: 'The base surface for grouping content. Compose with CardHeader, CardContent and CardFooter.',
-    import: "import { Card, CardHeader, CardContent, CardFooter } from 'focus-ui';",
+    import: "import { Card, CardHeader, CardContent, CardFooter } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'card/Basic', title: 'Composition' },
       { file: 'card/Variants', title: 'Variants', bleed: true },
@@ -202,7 +202,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Tag',
     group: 'Foundations',
     description: 'Removable chip for active filters and multi-value fields.',
-    import: "import { Tag } from 'focus-ui';",
+    import: "import { Tag } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'tag/Filters', title: 'Active filters' }],
     props: [
       {
@@ -219,7 +219,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Spinner, Skeleton & Kbd',
     group: 'Foundations',
     description: 'Small building blocks: an Apple-style activity indicator, shimmering skeletons, keyboard keys and dividers.',
-    import: "import { Spinner, Skeleton, Kbd, Divider } from 'focus-ui';",
+    import: "import { Spinner, Skeleton, Kbd, Divider } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'loading/Spinners', title: 'Spinner' },
       { file: 'loading/Skeletons', title: 'Skeleton' },
@@ -258,7 +258,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Forms',
     description:
       'Field provides the label, helper text and error message, and wires ids and ARIA attributes to any control inside it automatically.',
-    import: "import { Field, Input, Textarea } from 'focus-ui';",
+    import: "import { Field, Input, Textarea } from '@jkpeyi/focus-ui';",
     examples: [
       {
         file: 'input/Basic',
@@ -311,7 +311,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Forms',
     description:
       'A styled native select. Native means flawless keyboard, mobile picker and screen reader behavior for short lists.',
-    import: "import { Select } from 'focus-ui';",
+    import: "import { Select } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'select/Basic', title: 'Select' }],
     props: [
       {
@@ -334,7 +334,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Combobox',
     group: 'Forms',
     description: 'Searchable select for large lists — customers, products, GL accounts, cost centers. Fully keyboard operable.',
-    import: "import { Combobox } from 'focus-ui';",
+    import: "import { Combobox } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'combobox/CustomerPicker', title: 'Customer picker' }],
     props: [
       {
@@ -363,7 +363,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Checkbox',
     group: 'Forms',
     description: 'Binary choice, with indeterminate state for parent/child selections.',
-    import: "import { Checkbox } from 'focus-ui';",
+    import: "import { Checkbox } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'checkbox/Basic', title: 'Basic' },
       { file: 'checkbox/Indeterminate', title: 'Indeterminate' },
@@ -384,7 +384,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Switch',
     group: 'Forms',
     description: 'iOS-style toggle for settings that take effect immediately.',
-    import: "import { Switch } from 'focus-ui';",
+    import: "import { Switch } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'switch/Settings', title: 'Settings list' }],
     props: [
       {
@@ -405,7 +405,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Radio Group',
     group: 'Forms',
     description: 'Single choice from a short list. The cards variant suits plan, shipping or payment method selection.',
-    import: "import { RadioGroup } from 'focus-ui';",
+    import: "import { RadioGroup } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'radio/Basic', title: 'Basic' },
       { file: 'radio/Cards', title: 'Cards', bleed: true },
@@ -428,7 +428,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Segmented Control',
     group: 'Forms',
     description: 'The signature macOS/iOS control for switching views, periods or filters, with a sliding selection thumb.',
-    import: "import { SegmentedControl } from 'focus-ui';",
+    import: "import { SegmentedControl } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'segmented/Basic', title: 'Segmented control' }],
     props: [
       {
@@ -451,7 +451,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Search Field',
     group: 'Forms',
     description: 'Filled search input with clear button and an optional global ⌘K shortcut.',
-    import: "import { SearchField } from 'focus-ui';",
+    import: "import { SearchField } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'search/Basic', title: 'Search field' }],
     props: [
       {
@@ -471,7 +471,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Alert',
     group: 'Feedback',
     description: 'Inline, persistent message about the state of a page or record.',
-    import: "import { Alert } from 'focus-ui';",
+    import: "import { Alert } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'alert/Tones', title: 'Tones' }],
     props: [
       {
@@ -495,7 +495,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Toast',
     group: 'Feedback',
     description: 'Transient notifications. Wrap your app in ToastProvider once, then call toast() from anywhere.',
-    import: "import { ToastProvider, useToast } from 'focus-ui';",
+    import: "import { ToastProvider, useToast } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'toast/Basic', title: 'Toasts' }],
     props: [
       {
@@ -537,7 +537,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Progress',
     group: 'Feedback',
     description: 'Linear bars for quotas and capacity, and activity-style rings for compact KPIs.',
-    import: "import { Progress, ProgressRing } from 'focus-ui';",
+    import: "import { Progress, ProgressRing } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'progress/Bars', title: 'Progress bar' },
       { file: 'progress/Rings', title: 'Progress ring' },
@@ -568,7 +568,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Empty State',
     group: 'Feedback',
     description: 'Explains why a view is empty and what to do next.',
-    import: "import { EmptyState } from 'focus-ui';",
+    import: "import { EmptyState } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'empty/Basic', title: 'Empty state' }],
     props: [
       {
@@ -589,7 +589,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Overlays',
     description:
       'Focused tasks that interrupt the flow. Centered on desktop, a bottom sheet on phones. Focus is trapped and restored, body scroll locked, Escape closes.',
-    import: "import { Modal, ConfirmDialog } from 'focus-ui';",
+    import: "import { Modal, ConfirmDialog } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'modal/Basic', title: 'Form modal' },
       {
@@ -629,7 +629,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Sheet',
     group: 'Overlays',
     description: 'Side panel for previewing or editing a record without leaving the list — a core ERP pattern.',
-    import: "import { Sheet } from 'focus-ui';",
+    import: "import { Sheet } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'sheet/RecordDetail', title: 'Record detail' }],
     props: [
       {
@@ -649,7 +649,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Popover',
     group: 'Overlays',
     description: 'Floating panel anchored to a trigger — filters, quick settings, inline forms.',
-    import: "import { Popover } from 'focus-ui';",
+    import: "import { Popover } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'popover/Filters', title: 'Filter popover' }],
     props: [
       {
@@ -671,7 +671,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Tooltip',
     group: 'Overlays',
     description: 'Short, non-essential hint on hover and keyboard focus.',
-    import: "import { Tooltip } from 'focus-ui';",
+    import: "import { Tooltip } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'tooltip/Basic', title: 'Tooltip' }],
     props: [
       {
@@ -690,7 +690,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Overlays',
     description:
       'Contextual actions, with shortcuts, sections, check items and full keyboard navigation (↑ ↓ Home End Enter Esc).',
-    import: "import { DropdownMenu } from 'focus-ui';",
+    import: "import { DropdownMenu } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'menu/RowActions', title: 'Action menus' }],
     props: [
       {
@@ -723,7 +723,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Navigation',
     description:
       'Responsive application frame that wires a Sidebar, a Topbar and an optional Footer together: the sidebar collapses to icons on desktop and becomes a drawer on tablets and phones.',
-    import: "import { AppShell, Sidebar, Topbar, Footer, PageHeader } from 'focus-ui';",
+    import: "import { AppShell, Sidebar, Topbar, Footer, PageHeader } from '@jkpeyi/focus-ui';",
     examples: [],
     props: [
       {
@@ -767,7 +767,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Navigation',
     description:
       'macOS-style source list for module navigation: sections, badges, nested sub-menus, icon-only collapsed mode with tooltips and flyouts, and a profile footer. Works inside AppShell or standalone in any layout.',
-    import: "import { Sidebar, SidebarSection, SidebarItem, SidebarProfile } from 'focus-ui';",
+    import: "import { Sidebar, SidebarSection, SidebarItem, SidebarProfile } from '@jkpeyi/focus-ui';",
     examples: [
       {
         file: 'sidebar/Basic',
@@ -854,7 +854,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Navigation',
     description:
       'Footer comes in three densities — a full link-column footer for portals, a single-row page footer, and a compact status bar for app shells. ActionBar is the contextual footer for forms: save / discard when there are unsaved changes.',
-    import: "import { Footer, ActionBar } from 'focus-ui';",
+    import: "import { Footer, ActionBar } from '@jkpeyi/focus-ui';",
     examples: [
       {
         file: 'footer/StatusBar',
@@ -925,7 +925,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Page Header',
     group: 'Navigation',
     description: 'Title area for record and list pages with breadcrumbs, status and actions.',
-    import: "import { PageHeader, Breadcrumbs } from 'focus-ui';",
+    import: "import { PageHeader, Breadcrumbs } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'pageheader/Basic', title: 'Record header', bleed: true }],
   },
   {
@@ -933,7 +933,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Tabs',
     group: 'Navigation',
     description: 'Switch between related views of the same record. Arrow keys move between tabs.',
-    import: "import { Tabs, TabList, Tab, TabPanel } from 'focus-ui';",
+    import: "import { Tabs, TabList, Tab, TabPanel } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'tabs/Underline', title: 'Underline', bleed: true },
       { file: 'tabs/Pill', title: 'Pill', bleed: true },
@@ -969,7 +969,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Breadcrumbs',
     group: 'Navigation',
     description: 'Shows the location within the module hierarchy. Collapses to the parent link on phones.',
-    import: "import { Breadcrumbs } from 'focus-ui';",
+    import: "import { Breadcrumbs } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'breadcrumbs/Basic', title: 'Breadcrumbs' }],
     props: [
       {
@@ -988,7 +988,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Pagination',
     group: 'Navigation',
     description: 'Page navigation with range summary and page-size selector. Use with server-side data.',
-    import: "import { Pagination } from 'focus-ui';",
+    import: "import { Pagination } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'pagination/Basic', title: 'Pagination', bleed: true }],
     props: [
       {
@@ -1011,7 +1011,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Data display',
     description:
       'The workhorse of ERP list views: sorting, row selection with a floating bulk-action bar, totals footer, pagination, loading skeletons, density, sticky header/column and responsive column hiding.',
-    import: "import { DataTable, type DataTableColumn } from 'focus-ui';",
+    import: "import { DataTable, type DataTableColumn } from '@jkpeyi/focus-ui';",
     examples: [
       {
         file: 'table/Orders',
@@ -1089,7 +1089,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Data display',
     description:
       'KPI tile with period-over-period change and a sparkline. invertDelta flips colors for metrics where lower is better.',
-    import: "import { StatCard, Sparkline } from 'focus-ui';",
+    import: "import { StatCard, Sparkline } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'stat/Kpis', title: 'KPI row', bleed: true }],
     props: [
       {
@@ -1111,7 +1111,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Description List',
     group: 'Data display',
     description: 'Read-only key/value pairs for record details.',
-    import: "import { DescriptionList } from 'focus-ui';",
+    import: "import { DescriptionList } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'description/Inline', title: 'Inline' },
       { file: 'description/Grid', title: 'Grid', bleed: true },
@@ -1136,7 +1136,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Stepper',
     group: 'Data display',
     description: 'Shows progress through a workflow — document lifecycle, approval chain, wizard.',
-    import: "import { Stepper } from 'focus-ui';",
+    import: "import { Stepper } from '@jkpeyi/focus-ui';",
     examples: [
       { file: 'stepper/Horizontal', title: 'Order lifecycle', bleed: true },
       { file: 'stepper/Vertical', title: 'Approval chain (with error)' },
@@ -1162,7 +1162,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Timeline',
     group: 'Data display',
     description: 'Chronological activity — audit trails, comments and status changes on a record.',
-    import: "import { Timeline } from 'focus-ui';",
+    import: "import { Timeline } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'timeline/Activity', title: 'Activity' }],
     props: [
       {
@@ -1178,7 +1178,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Authentication',
     description:
       'Ready-made authentication screens built from one layout component. AuthLayout gives you the page shell — centered card or split screen with a branded panel — and the screens below are complete samples to copy into your app and wire to your auth API.',
-    import: "import { AuthLayout, AuthDivider, PasswordInput, OtpInput } from 'focus-ui';",
+    import: "import { AuthLayout, AuthDivider, PasswordInput, OtpInput } from '@jkpeyi/focus-ui';",
     examples: [
       {
         file: 'auth/Login',
@@ -1239,7 +1239,7 @@ export const componentDocs: ComponentDoc[] = [
     group: 'Authentication',
     description:
       'One-time code entry: one box per character with auto-advance, backspace to the previous box, arrow keys, full-code paste and SMS autofill.',
-    import: "import { OtpInput } from 'focus-ui';",
+    import: "import { OtpInput } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'otp/Variants', title: 'Variants' }],
     props: [
       {
@@ -1272,7 +1272,7 @@ export const componentDocs: ComponentDoc[] = [
     title: 'Password Input',
     group: 'Authentication',
     description: 'Password field with a show/hide toggle and an optional strength meter for sign-up and change-password forms.',
-    import: "import { PasswordInput, getPasswordStrength } from 'focus-ui';",
+    import: "import { PasswordInput, getPasswordStrength } from '@jkpeyi/focus-ui';",
     examples: [{ file: 'password/Basic', title: 'Password input' }],
     props: [
       {

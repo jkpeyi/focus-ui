@@ -1,4 +1,4 @@
-import { StatCard, formatCurrency } from 'focus-ui';
+import { StatCard, formatCurrency } from '@jkpeyi/focus-ui';
 import { Clock, DollarSign, Package, ShoppingCart } from 'lucide-react';
 
 export default function Example() {

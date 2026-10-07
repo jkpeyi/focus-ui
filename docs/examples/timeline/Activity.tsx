@@ -1,4 +1,4 @@
-import { Card, Timeline } from 'focus-ui';
+import { Card, Timeline } from '@jkpeyi/focus-ui';
 import { CheckCircle2, CreditCard, FileText, Truck } from 'lucide-react';
 
 export default function Example() {

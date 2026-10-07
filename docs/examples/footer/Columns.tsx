@@ -1,4 +1,4 @@
-import { Badge, Footer, IconButton } from 'focus-ui';
+import { Badge, Footer, IconButton } from '@jkpeyi/focus-ui';
 import { Globe, Mail } from 'lucide-react';
 
 export default function Example() {

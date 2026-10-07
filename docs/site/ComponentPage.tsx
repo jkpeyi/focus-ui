@@ -1,4 +1,4 @@
-import { Badge, Button } from 'focus-ui';
+import { Badge, Button } from '@jkpeyi/focus-ui';
 import { ArrowRight, Check } from 'lucide-react';
 import type { ComponentDoc } from '../content/components';
 import { CodeBlock } from './CodeBlock';

@@ -1,4 +1,4 @@
-import { Field, Select } from 'focus-ui';
+import { Field, Select } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

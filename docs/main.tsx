@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ThemeProvider, ToastProvider } from 'focus-ui';
+import { ThemeProvider, ToastProvider } from '@jkpeyi/focus-ui';
 import { App } from './site/App';
 import './styles.css';
 

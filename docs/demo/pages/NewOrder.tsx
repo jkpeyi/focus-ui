@@ -14,7 +14,7 @@ import {
   Select,
   Textarea,
   useToast,
-} from 'focus-ui';
+} from '@jkpeyi/focus-ui';
 import { Plus, Trash2 } from 'lucide-react';
 import { customers, products } from '../data';
 import { eur, go } from '../shared';

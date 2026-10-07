@@ -1,4 +1,4 @@
-import { Card, Skeleton } from 'focus-ui';
+import { Card, Skeleton } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

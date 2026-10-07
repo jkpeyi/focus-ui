@@ -1,4 +1,4 @@
-import { Alert, Button } from 'focus-ui';
+import { Alert, Button } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

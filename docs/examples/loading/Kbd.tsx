@@ -1,4 +1,4 @@
-import { Divider, Kbd } from 'focus-ui';
+import { Divider, Kbd } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   return (

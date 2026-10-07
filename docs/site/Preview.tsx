@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { cn, SegmentedControl } from 'focus-ui';
+import { cn, SegmentedControl } from '@jkpeyi/focus-ui';
 import { Code2, Eye } from 'lucide-react';
 import { CodeBlock } from './CodeBlock';
 import { getExample } from './examples';

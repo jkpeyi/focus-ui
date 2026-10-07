@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Field, Input, Textarea } from 'focus-ui';
+import { Field, Input, Textarea } from '@jkpeyi/focus-ui';
 
 export default function Example() {
   const [vat, setVat] = useState('FR12');
