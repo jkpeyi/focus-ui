@@ -333,6 +333,15 @@ npm run format      # Prettier
 
 Adding a component: create `src/components/MyThing.tsx`, export it from `src/index.ts`, add examples in `docs/examples/my-thing/`, register the page in `docs/content/components.ts`, and add tests in `tests/`.
 
+## Releasing
+
+Publishing uses **npm Trusted Publishing** from GitHub Actions — no npm tokens are stored.
+
+1. Bump `version` in `package.json` and commit.
+2. Create a GitHub Release whose tag matches it (e.g. `v0.1.1`). The **Publish to npm** workflow typechecks, tests, builds and publishes with provenance.
+
+One-time setup (already done once the package exists): on npmjs.com → `@jkpeyi/focus-ui` → Settings → **Trusted Publisher** → GitHub Actions, user `jkpeyi`, repository `focus-ui`, workflow `publish.yml`.
+
 ## License
 
 MIT
