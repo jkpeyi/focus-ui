@@ -25,6 +25,9 @@ export * from './components/SegmentedControl';
 export * from './components/SearchField';
 export * from './components/PasswordInput';
 export * from './components/OtpInput';
+export * from './components/FileInput';
+export * from './components/FileDropzone';
+export * from './components/FileList';
 
 // Feedback
 export * from './components/Alert';
@@ -68,4 +71,5 @@ export * from './components/ThemeProvider';
 export * from './hooks';
 export { cn } from './utils/cn';
 export * from './utils/format';
+export * from './utils/files';
 export { mergeRefs } from './utils/ref';

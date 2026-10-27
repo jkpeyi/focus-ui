@@ -86,7 +86,7 @@ The site is deployed to **GitHub Pages** by `.github/workflows/deploy-docs.yml` 
 | Group                   | Components                                                                                                                                                                                                                                             |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Foundations**         | `Button`, `IconButton`, `Badge`, `Avatar`, `AvatarGroup`, `Card` (+ `CardHeader`, `CardContent`, `CardFooter`), `Tag`, `Divider`, `Spinner`, `Skeleton`, `Kbd`                                                                                         |
-| **Forms**               | `Field`, `Label`, `Input`, `Textarea`, `Select`, `Combobox`, `Checkbox`, `Switch`, `RadioGroup`, `SegmentedControl`, `SearchField`                                                                                                                     |
+| **Forms**               | `Field`, `Label`, `Input`, `Textarea`, `Select`, `Combobox`, `Checkbox`, `Switch`, `RadioGroup`, `SegmentedControl`, `SearchField`, `FileInput`, `FileDropzone`, `FileList`                                                                            |
 | **Feedback**            | `Alert`, `ToastProvider` / `useToast`, `Progress`, `ProgressRing`, `EmptyState`                                                                                                                                                                        |
 | **Overlays**            | `Modal`, `ConfirmDialog`, `Sheet`, `Popover`, `Tooltip`, `DropdownMenu`, `Portal`                                                                                                                                                                      |
 | **Authentication**      | `AuthLayout` (centered / split), `AuthDivider`, `OtpInput`, `PasswordInput` + `getPasswordStrength` — plus ready-made Sign in, Registration and 2-step verification sample screens in `docs/examples/auth/`                                            |
@@ -257,6 +257,20 @@ const columns: DataTableColumn<Order>[] = [
     </>
   }
 />
+```
+
+### File upload
+
+```tsx
+const [files, setFiles] = useState<FileItem[]>([]);
+
+<FileDropzone
+  accept=".pdf,.xlsx,image/*"
+  maxSize={10 * 1024 * 1024}
+  onFilesAdded={(added) => setFiles((all) => [...all, ...added.map((f) => fileToItem(f))])}
+  onReject={(rejections) => rejections.forEach((r) => toast({ title: r.message, tone: 'danger' }))}
+/>
+<FileList items={files} onRemove={(id) => setFiles((all) => all.filter((f) => f.id !== id))} />
 ```
 
 ### Authentication screens

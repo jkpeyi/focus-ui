@@ -1,8 +1,14 @@
 import { useState } from 'react';
-import { render, screen, within } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
   ActionBar,
+  FileDropzone,
+  FileInput,
+  FileList,
+  formatBytes,
+  matchesAccept,
+  validateFiles,
   OtpInput,
   PasswordInput,
   getPasswordStrength,
@@ -387,5 +393,117 @@ describe('OtpInput focus recovery', () => {
     const { rerender } = render(<OtpInput length={4} autoFocus disabled value="" onValueChange={() => {}} />);
     rerender(<OtpInput length={4} autoFocus value="" onValueChange={() => {}} />);
     expect(screen.getAllByRole('textbox')[0]).toHaveFocus();
+  });
+});
+
+describe('File utilities', () => {
+  it('formats bytes', () => {
+    expect(formatBytes(0)).toBe('0 B');
+    expect(formatBytes(512)).toBe('512 B');
+    expect(formatBytes(1536)).toBe('1.5 KB');
+    expect(formatBytes(10 * 1024 * 1024)).toBe('10 MB');
+  });
+
+  it('matches accept rules like the native attribute', () => {
+    expect(matchesAccept({ name: 'a.PDF', type: 'application/pdf' }, '.pdf')).toBe(true);
+    expect(matchesAccept({ name: 'logo.png', type: 'image/png' }, 'image/*')).toBe(true);
+    expect(matchesAccept({ name: 'run.exe', type: 'application/x-msdownload' }, '.pdf,image/*')).toBe(false);
+    expect(matchesAccept({ name: 'anything.bin' })).toBe(true);
+  });
+
+  it('validates type, size and count', () => {
+    const pdf = new File(['x'.repeat(10)], 'a.pdf', { type: 'application/pdf' });
+    const big = new File(['x'.repeat(2000)], 'b.pdf', { type: 'application/pdf' });
+    const exe = new File(['x'], 'c.exe');
+    const pdf2 = new File(['y'], 'd.pdf', { type: 'application/pdf' });
+    const { accepted, rejected } = validateFiles([pdf, big, exe, pdf2], {
+      accept: '.pdf',
+      maxSize: 1000,
+      maxFiles: 2,
+      currentCount: 1,
+    });
+    expect(accepted.map((f) => f.name)).toEqual(['a.pdf']);
+    expect(rejected.map((r) => r.reason)).toEqual(['size', 'type', 'count']);
+  });
+});
+
+describe('FileInput', () => {
+  it('shows the chosen file, rejects oversized files and clears', async () => {
+    const user = userEvent.setup({ applyAccept: false });
+    const onChange = vi.fn();
+    const onReject = vi.fn();
+    render(
+      <Field label="Logo">
+        <FileInput accept=".png" maxSize={100} onFilesChange={onChange} onReject={onReject} />
+      </Field>,
+    );
+    const button = screen.getByRole('button', { name: /logo/i });
+    expect(button).toHaveTextContent('Choose file');
+    const native = document.querySelector('input[type=file]') as HTMLInputElement;
+
+    await user.upload(native, new File(['tiny'], 'logo.png', { type: 'image/png' }));
+    expect(onChange).toHaveBeenLastCalledWith([expect.objectContaining({ name: 'logo.png' })]);
+    expect(screen.getByText('logo.png')).toBeInTheDocument();
+
+    await user.upload(native, new File(['x'.repeat(500)], 'huge.png', { type: 'image/png' }));
+    expect(onReject).toHaveBeenCalledWith([expect.objectContaining({ reason: 'size' })]);
+
+    await user.click(screen.getByRole('button', { name: 'Remove selected files' }));
+    expect(onChange).toHaveBeenLastCalledWith([]);
+    expect(screen.getByText('No file selected')).toBeInTheDocument();
+  });
+});
+
+describe('FileDropzone', () => {
+  it('accepts dropped files and reports rejections', () => {
+    const onAdded = vi.fn();
+    const onReject = vi.fn();
+    render(<FileDropzone accept=".csv" maxFiles={2} onFilesAdded={onAdded} onReject={onReject} />);
+    const zone = screen.getByRole('button', { name: /choose files/i });
+    expect(zone).toHaveAccessibleDescription(/CSV · max 2 files/);
+    const files = [
+      new File(['a'], 'a.csv', { type: 'text/csv' }),
+      new File(['b'], 'b.txt'),
+      new File(['c'], 'c.csv'),
+      new File(['d'], 'd.csv'),
+    ];
+    fireEvent.dragEnter(zone, { dataTransfer: { files } });
+    expect(zone).toHaveTextContent('Drop to upload');
+    fireEvent.drop(zone, { dataTransfer: { files } });
+    expect(onAdded).toHaveBeenCalledWith([files[0], files[2]]);
+    expect(onReject.mock.calls[0][0].map((r: { reason: string }) => r.reason)).toEqual(['type', 'count']);
+  });
+
+  it('is disabled once maxFiles is reached', () => {
+    render(<FileDropzone maxFiles={3} currentCount={3} />);
+    expect(screen.getByRole('button')).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.getByText('Maximum of 3 files reached')).toBeInTheDocument();
+  });
+});
+
+describe('FileList', () => {
+  it('renders statuses with retry and remove', async () => {
+    const onRemove = vi.fn();
+    const onRetry = vi.fn();
+    render(
+      <FileList
+        onRemove={onRemove}
+        onRetry={onRetry}
+        items={[
+          { id: '1', name: 'invoice.pdf', size: 2048, status: 'done' },
+          { id: '2', name: 'sheet.xlsx', status: 'uploading', progress: 40 },
+          { id: '3', name: 'scan.png', status: 'error', error: 'Too slow' },
+          { id: '4', name: 'stock.csv', status: 'done' },
+        ]}
+      />,
+    );
+    expect(screen.getByText('2 KB')).toBeInTheDocument();
+    expect(screen.getByRole('progressbar', { name: 'Uploading sheet.xlsx' })).toHaveAttribute('aria-valuenow', '40');
+    expect(screen.getByText('Too slow')).toBeInTheDocument();
+    expect(screen.getByText('CSV')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Retry' }));
+    expect(onRetry).toHaveBeenCalledWith('3');
+    await userEvent.click(screen.getByRole('button', { name: 'Remove invoice.pdf' }));
+    expect(onRemove).toHaveBeenCalledWith('1');
   });
 });

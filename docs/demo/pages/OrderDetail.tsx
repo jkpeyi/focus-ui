@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import {
   Alert,
+  FileDropzone,
+  FileList,
+  fileToItem,
+  type FileItem,
   Avatar,
   Breadcrumbs,
   Button,
@@ -35,6 +39,17 @@ export function OrderDetail({ id }: { id: string }) {
   const found = orders.find((o) => o.id === id);
   const [status, setStatus] = useState<OrderStatus>(found?.status ?? 'draft');
   const [confirm, setConfirm] = useState(false);
+  const [attachments, setAttachments] = useState<FileItem[]>([
+    {
+      id: 'po',
+      name: `Customer-PO-${found?.number ?? id}.pdf`,
+      size: 184_320,
+      type: 'application/pdf',
+      status: 'done',
+      href: '#',
+    },
+    { id: 'spec', name: 'technical-spec.xlsx', size: 52_800, status: 'done', href: '#' },
+  ]);
 
   if (!found) {
     return <EmptyState title="Order not found" actions={<Button onClick={() => go('orders')}>Back to orders</Button>} />;
@@ -139,6 +154,9 @@ export function OrderDetail({ id }: { id: string }) {
                 Line items
               </Tab>
               <Tab value="details">Details</Tab>
+              <Tab value="attachments" count={attachments.length}>
+                Attachments
+              </Tab>
               <Tab value="activity">Activity</Tab>
             </TabList>
             <TabPanel value="lines">
@@ -188,6 +206,23 @@ export function OrderDetail({ id }: { id: string }) {
                   ]}
                 />
               </Card>
+            </TabPanel>
+            <TabPanel value="attachments" className="space-y-3">
+              <FileDropzone
+                compact
+                accept=".pdf,.xlsx,.csv,.docx,image/*"
+                maxSize={10 * 1024 * 1024}
+                onFilesAdded={(files) => {
+                  setAttachments((all) => [...all, ...files.map((f) => fileToItem(f, { status: 'done' }))]);
+                  toast({ title: `${files.length} file${files.length > 1 ? 's' : ''} attached`, tone: 'success' });
+                }}
+                onReject={(rejections) => rejections.forEach((r) => toast({ title: r.message, tone: 'danger' }))}
+              />
+              <FileList
+                items={attachments}
+                emptyText="No attachments yet."
+                onRemove={(fileId) => setAttachments((all) => all.filter((f) => f.id !== fileId))}
+              />
             </TabPanel>
             <TabPanel value="activity">
               <Card padding="md" className="space-y-5">

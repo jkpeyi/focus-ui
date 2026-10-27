@@ -141,7 +141,7 @@ export function App() {
           end={
             <>
               <Badge variant="outline" className="hidden sm:inline-flex">
-                v0.1.0
+                v0.1.1
               </Badge>
               <ThemeMenu />
               <IconButton

@@ -464,6 +464,118 @@ export const componentDocs: ComponentDoc[] = [
       },
     ],
   },
+  {
+    slug: 'file-upload',
+    title: 'File upload',
+    group: 'Forms',
+    description:
+      'Three pieces for files: FileInput (a compact picker that looks like a text field), FileDropzone (drag-and-drop that also works by click and keyboard) and FileList (attachments with type badge, size, upload progress, retry and remove). Type, size and count are validated before files reach your code.',
+    import: "import { FileInput, FileDropzone, FileList, fileToItem, formatBytes } from '@jkpeyi/focus-ui';",
+    examples: [
+      {
+        file: 'file/Input',
+        title: 'File input',
+        description: 'Inside a Field for label, help and error. Try a file over 2 MB or the wrong type on the logo field.',
+      },
+      {
+        file: 'file/Attachments',
+        title: 'Attachments with upload progress',
+        description:
+          'Dropzone + FileList. Rows show done, uploading and failed states; new files upload with simulated progress.',
+      },
+      {
+        file: 'file/CsvImport',
+        title: 'CSV import',
+        description:
+          'Single-file dropzone that reads the CSV in the browser and previews it. Click “Use sample file” to try without a file.',
+        bleed: true,
+      },
+    ],
+    props: [
+      {
+        title: 'FileInput',
+        props: [
+          { name: 'accept', type: 'string', description: 'Native accept syntax: ".pdf,.csv", "image/*".' },
+          { name: 'multiple', type: 'boolean', description: 'Allow several files.' },
+          { name: 'maxSize', type: 'number', description: 'Max bytes per file; larger files go to onReject.' },
+          {
+            name: 'value / onFilesChange',
+            type: 'File[] / (files) => void',
+            description: 'Controlled or uncontrolled selection.',
+          },
+          {
+            name: 'onReject',
+            type: '(rejections: FileRejection[]) => void',
+            description: 'Files refused by accept / maxSize, with a message.',
+          },
+          { name: 'buttonLabel / placeholder', type: 'ReactNode', description: 'Button text and empty-state text.' },
+          { name: 'clearable', type: 'boolean', default: 'true', description: 'Show a × to clear the selection.' },
+          { name: 'name', type: 'string', description: 'Keeps a native input for regular form posts.' },
+          {
+            name: 'size / disabled / required / invalid',
+            type: '…',
+            description: 'Same as Input; picked up from a surrounding Field.',
+          },
+        ],
+      },
+      {
+        title: 'FileDropzone',
+        props: [
+          { name: 'accept / maxSize', type: 'string / number', description: 'Validation rules.' },
+          { name: 'multiple', type: 'boolean', default: 'true', description: 'Accept several files per drop.' },
+          { name: 'maxFiles / currentCount', type: 'number', description: 'Cap the total; pass the files already added.' },
+          { name: 'onFilesAdded', type: '(files: File[]) => void', description: 'Files that passed validation.' },
+          {
+            name: 'onReject',
+            type: '(rejections: FileRejection[]) => void',
+            description: 'Refused files with reason "type" | "size" | "count".',
+          },
+          {
+            name: 'title / description / icon',
+            type: 'ReactNode',
+            description: 'Override texts; description defaults to e.g. "PDF, CSV · up to 10 MB".',
+          },
+          { name: 'compact', type: 'boolean', description: 'Single-row layout.' },
+        ],
+      },
+      {
+        title: 'FileList',
+        props: [
+          {
+            name: 'items',
+            type: 'FileItem[]',
+            description: '{ id, name, size?, type?, status?, progress?, error?, preview?, href? }',
+          },
+          { name: 'onRemove', type: '(id: string) => void', description: 'Shows a remove button per row.' },
+          { name: 'onRetry', type: '(id: string) => void', description: 'Shows Retry on failed rows.' },
+          { name: 'renderActions', type: '(item) => ReactNode', description: 'Extra per-row controls (download…).' },
+          { name: 'emptyText', type: 'ReactNode', description: 'Shown when there are no items.' },
+        ],
+      },
+      {
+        title: 'Helpers',
+        props: [
+          {
+            name: 'fileToItem(file, extra?)',
+            type: 'FileItem',
+            description: 'Turns a File into a list item, with an image preview when possible.',
+          },
+          {
+            name: 'validateFiles(files, options)',
+            type: '{ accepted, rejected }',
+            description: 'The same validation, for your own inputs.',
+          },
+          { name: 'formatBytes(bytes)', type: 'string', description: '1536 → "1.5 KB".' },
+        ],
+      },
+    ],
+    guidelines: [
+      'Always say which types and sizes are accepted — the dropzone does it for you when you set accept and maxSize.',
+      'Validate on the server too: accept is a convenience, not a security boundary.',
+      'Show progress for anything that takes more than a second, and let people retry failed uploads.',
+      'Revoke object URLs (URL.revokeObjectURL) for image previews when files are removed.',
+    ],
+  },
 
   // ───────────────────────── Feedback
   {
